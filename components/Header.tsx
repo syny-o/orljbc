@@ -10,7 +10,7 @@ export type Session = typeof authClient.$Infer.Session
 
 
 type HeaderProps = {
-  session: Session;
+  session: Session | null;
 };
 
 export default function Header(props:HeaderProps) {
