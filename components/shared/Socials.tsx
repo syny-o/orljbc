@@ -12,7 +12,12 @@ const socialsData = [
   },
 ];
 
-const Socials = ({ containerStyles }) => {
+interface SocialsProps {
+  containerStyles?: string;
+}
+
+
+const Socials = ({ containerStyles } : SocialsProps) => {
   return (
     <div className={`${containerStyles}`}>
       {socialsData.map((item, index) => {
