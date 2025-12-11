@@ -16,8 +16,29 @@ import {
 } from "@/components/ui/alert-dialog";
 
 import { Trash2 } from "lucide-react";
+import { useState } from "react";
 
 export default function DeleteDialog({ novinka }: { novinka: Novinka }) {
+  const [loading, setLoading] = useState(false);
+
+  async function handleDelete() {
+    setLoading(true);
+
+    const formData = new FormData();
+    formData.append("id", String(novinka.id));
+
+    const result = await deleteItem(formData);
+
+    if (!result.success) {
+      alert(result.error);
+      setLoading(false);
+      return;
+    }
+
+    // Let Radix close the dialog by clicking the action button
+    setLoading(false);
+  }
+
   return (
     <AlertDialog>
       <AlertDialogTrigger asChild>
@@ -35,18 +56,15 @@ export default function DeleteDialog({ novinka }: { novinka: Novinka }) {
         </AlertDialogHeader>
 
         <AlertDialogFooter>
-          <AlertDialogCancel>Zrušit</AlertDialogCancel>
+          <AlertDialogCancel disabled={loading}>Zrušit</AlertDialogCancel>
 
-          <form action={deleteItem}>
-            <input type="hidden" name="id" value={novinka.id} />
-
-            <AlertDialogAction
-              type="submit"
-              className="bg-red-600 hover:bg-red-800"
-            >
-              Smazat
-            </AlertDialogAction>
-          </form>
+          <AlertDialogAction
+            onClick={handleDelete}
+            className="bg-red-600 hover:bg-red-800"
+            disabled={loading}
+          >
+            {loading ? "Mažu…" : "Smazat"}
+          </AlertDialogAction>
         </AlertDialogFooter>
       </AlertDialogContent>
     </AlertDialog>
