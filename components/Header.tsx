@@ -4,21 +4,26 @@ import Link from "next/link";
 import Logo from "./shared/Logo";
 // import { Session } from "better-auth";
 
-import { createAuthClient } from "better-auth/client"
-const authClient = createAuthClient()
-export type Session = typeof authClient.$Infer.Session
-
+import { createAuthClient } from "better-auth/client";
+import { ThemeToggle } from "./shared/ThemeToggle";
+import NavMobile from "./NavMobile";
+const authClient = createAuthClient();
+export type Session = typeof authClient.$Infer.Session;
 
 type HeaderProps = {
   session: Session | null;
 };
 
-export default function Header(props:HeaderProps) {
+export default function Header(props: HeaderProps) {
   return (
     <header className="py-8 lg:pt-6 lg:pb-14">
       <div className="container mx-auto lg:relative flex flex-col lg:flex-row lg:justify-between gap-y-4 lg:gap-y-0">
-        {/* LOGO */}
-        <Logo />
+        {/* LOGO + MOBILE NAV */}
+        <div className="flex justify-between items-center">
+          <NavMobile />
+
+          <Logo />
+        </div>
 
         {/* DOCTOR + LOCATION + PHONE */}
         <div className="flex flex-col gap-y-4 xl:flex-row lg:gap-x-6 lg:gap-y-0 items-center">
@@ -43,6 +48,10 @@ export default function Header(props:HeaderProps) {
               <Phone />
             </span>
             <div className="font-semibold text-gray-500">+420 483 369 269</div>
+          </div>
+          <div className="hidden lg:flex">
+
+          <ThemeToggle />
           </div>
         </div>
         {/* DESKTOP NAV */}

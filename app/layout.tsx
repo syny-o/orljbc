@@ -62,7 +62,6 @@ export default async function RootLayout({
         className={`antialiased ${inter.variable} ${bebasNeue.variable} ${poppins.variable} ${teko.variable} ${dmSans.variable} ${barlow.variable}`}
       >
         <main className="w-full">
-          <ThemeToggle />
           {children}</main>
       </body>
     </html>

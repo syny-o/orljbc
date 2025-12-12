@@ -15,29 +15,22 @@ import { Menu } from "lucide-react";
 
 import Logo from "./shared/Logo";
 
-
 import { Link as ScrollLink } from "react-scroll";
-import Socials from "./shared/Socials";
+import { ThemeToggle } from "./shared/ThemeToggle";
 
-const links = [
-  { name: "home", path: "home" },
-  { name: "služby", path: "services" },
-  { name: "o nás", path: "about" },
-  { name: "galerie", path: "work" },
-  { name: "kontakt", path: "contact" },
-];
+import {NAVIGATION} from "@/lib/constants"
 
 const NavMobile = () => {
   const [isOpen, setIsOpen] = useState(false);
   return (
     <Sheet open={isOpen} onOpenChange={setIsOpen}>
-      <SheetTrigger className="flex lg:hidden items-center text-4xl fixed left-5 top-5 bg-white border-2 border-accent rounded-full p-5">
-        <Menu size={32} />
+      <SheetTrigger className="flex lg:hidden items-center">
+        <Menu size={38} />
       </SheetTrigger>
-      <SheetContent side="left" className="bg-primary border-none text-white">
-        <div className="flex flex-col pt-16 pb-8 items-center justify-between h-full">
+      <SheetContent side="left" className="bg-black/80 border-none text-white">
+        <div className="flex flex-col pt-16 pb-8 items-center gap-3 h-full">
           <SheetHeader>
-            <SheetTitle>
+            <SheetTitle className="flex flex-col gap-5 items-center">
               <Logo />
             </SheetTitle>
             <SheetDescription className="sr-only">
@@ -45,14 +38,14 @@ const NavMobile = () => {
             </SheetDescription>
           </SheetHeader>
           <ul className="w-full flex flex-col gap-10 justify-center text-center">
-            {links.map((link, index) => (
+            {NAVIGATION.map((link, index) => (
               <li
                 key={index}
                 className="text-white font-medium uppercase font-primary tracking-[1.2px]"
               >
                 <ScrollLink
                   onClick={() => setIsOpen(false)}
-                  to={link.path}
+                  to={link.href}
                   smooth
                   spy
                   duration={500}
@@ -65,7 +58,10 @@ const NavMobile = () => {
             ))}
           </ul>
           {/* SOCIAL */}
-          <Socials containerStyles="text-white text-xl flex gap-6" />
+          {/* <Socials containerStyles="text-white text-xl flex gap-6 pt-10" /> */}
+          <div className="pt-10 text-accent">
+            <ThemeToggle />
+          </div>
         </div>
       </SheetContent>
     </Sheet>

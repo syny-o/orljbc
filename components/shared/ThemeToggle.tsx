@@ -30,13 +30,14 @@ export function ThemeToggle() {
       onClick={toggle}
       aria-label="Toggle Theme"
       className="
-        btn btn-outline absolute right-10 top-6 w-12 h-12 rounded-full
+        btn btn-outline w-12 h-12 rounded-full
         flex items-center justify-center
-        transition-all duration-300 z-100 border-2 border-accent cursor-pointer
+        transition-all duration-300 border-2 border-accent cursor-pointer
       "
     >
       {/* LIGHT ICON */}
       <Sun
+      size={32}
         className={`
           absolute h-5 w-5 transition-all duration-300 
           ${theme === "light" ? "scale-0 rotate-90 opacity-0" : "scale-100 rotate-0 opacity-100"}
@@ -45,6 +46,7 @@ export function ThemeToggle() {
 
       {/* DARK ICON */}
       <Moon
+      size={32}
         className={`
           absolute h-5 w-5 transition-all duration-300
           ${theme === "light" ? "scale-100 rotate-0 opacity-100" : "scale-0 -rotate-90 opacity-0"}

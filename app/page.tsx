@@ -23,7 +23,6 @@ export default async function HomePage() {
       <OpeningHours />
       <Faq />
       <Footer />
-      <NavMobile />
     </>
   );
 }
