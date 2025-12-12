@@ -1,4 +1,4 @@
-import type { Novinka as PrismaNovinka } from "@prisma/client";
+import type { Novinka as PrismaNovinka } from "@/generated/prisma/client";
 
 /**
  * Re-export Prisma type so UI files don't import from Prisma directly.
