@@ -64,8 +64,8 @@ export default function SignInPage() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center px-4">
-      <div className="w-full max-w-md backdrop-blur-xl p-8 rounded-2xl shadow-xl border border-white/20">
+    <div className="min-h-screen flex items-center justify-center px-4 bg-foreground">
+      <div className="w-full max-w-md backdrop-blur-xl p-8 rounded-2xl shadow-xl border border-white/20 bg-doctor-blue">
         <h1 className="text-3xl font-semibold text-primary text-center mb-6">
           Přihlásit se
         </h1>
@@ -91,7 +91,7 @@ export default function SignInPage() {
               setServerError("");
             }}
             placeholder="email@domena.cz"
-            className={`mt-1 w-full px-4 py-2 rounded-lg bg-white/10 border text-white
+            className={`mt-1 w-full px-4 py-2 rounded-lg border text-primary
     placeholder-slate-300 focus:outline-none focus:ring-2 focus:ring-sky-400
     ${emailError ? "border-red-500 shake" : "border-white/20"}`}
           />
@@ -114,7 +114,7 @@ export default function SignInPage() {
               setServerError("");
             }}
             placeholder="Vaše heslo"
-            className={`mt-5 w-full px-4 py-2 rounded-lg bg-white/10 border text-white
+            className={`mt-5 w-full px-4 py-2 rounded-lg bg-white/10 border text-primary
     placeholder-slate-300 focus:outline-none focus:ring-2 focus:ring-sky-400
     ${passwordError ? "border-red-500 shake" : "border-white/20"}`}
           />
