@@ -7,6 +7,8 @@ import { useRouter } from "next/navigation";
 import { signInAction } from "@/lib/serverActions/authActions";
 import { LoadingButton } from "@/components/shared/LoadingButton";
 import { Input } from "@/components/ui/input";
+import { ThemeToggle } from "../shared/ThemeToggle";
+import Logo from "../shared/Logo";
 
 export default function SignInPage() {
   const router = useRouter();
@@ -64,14 +66,18 @@ export default function SignInPage() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center px-4 bg-foreground">
+    <div className="min-h-screen flex items-center justify-center px-4 bg-background">
       <div className="w-full max-w-md backdrop-blur-xl p-8 rounded-2xl shadow-xl border border-white/20 bg-doctor-blue">
-        <h1 className="text-3xl font-semibold text-primary text-center mb-6">
+      <div className="flex flex-col justify-center items-center mb-5 gap-3">
+      <ThemeToggle/>
+      <Logo />
+      </div>
+        <h1 className="text-3xl font-semibold text-primary text-center mb-5">
           Přihlásit se
         </h1>
 
-        <p className="text-primary text-center mb-8">
-          Vítejte zpět — přihlaste se do svého účtu
+        <p className="text-primary text-center mb-5">
+          Přihlaste se do svého účtu
         </p>
 
         <form noValidate action={(formData) => handleSubmit()} className="">
@@ -126,7 +132,7 @@ export default function SignInPage() {
           <LoadingButton
             type="submit"
             loading={loading}
-            className="w-full bg-sky-500 hover:bg-sky-600 text-white font-semibold mt-5"
+            className="w-full bg-accent hover:bg-black hover:text-accent text-white font-semibold mt-5"
           >
             Přihlásit
           </LoadingButton>
@@ -136,9 +142,9 @@ export default function SignInPage() {
         </form>
 
         <p className="text-center text-primary text-sm mt-6">
-          Nemáte účet?{" "}
-          <Link href="/signup" className="text-sky-400 hover:underline">
-            Vytvořit účet
+          {/* Nemáte přístup?{" "} */}
+          <Link href="/" className="text-accent hover:underline">
+            Zpět na web
           </Link>
         </p>
       </div>
