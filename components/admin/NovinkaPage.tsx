@@ -1,5 +1,5 @@
 import prisma from "@/lib/prisma";
-import { Novinka } from "@prisma/client";
+import { Novinka } from "@/generated/prisma/client";
 
 import {
   Table,

@@ -1,6 +1,6 @@
 "use client";
 
-import { Novinka } from "@prisma/client";
+import { Novinka } from "@/generated/prisma/client";
 import { deleteItem } from "@/lib/serverActions/deleteItem";
 
 import {
