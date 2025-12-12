@@ -1,6 +1,7 @@
 import {
   Calendar,
   ChevronUp,
+  CircleQuestionMark,
   Clock,
   HomeIcon,
   InfoIcon,
@@ -32,20 +33,16 @@ import { headers } from "next/headers";
 // Menu items.
 const items = [
   {
-    title: "Důležité informace",
-    url: "/",
-    icon: InfoIcon,
-  },
-  {
     title: "Aktuality",
     url: "/novinky",
     icon: Calendar,
   },
   {
-    title: "Ordinační hodiny",
-    url: "#",
-    icon: Clock,
+    title: "Nejčastější dotazy",
+    url: "/nejcastejsi-dotazy",
+    icon: CircleQuestionMark,
   },
+
 ];
 
 export async function AppSidebar() {
@@ -114,11 +111,11 @@ export async function AppSidebar() {
                   </DropdownMenuContent>
                 </DropdownMenu>
               </SidebarMenuItem>
-              <SidebarMenuItem>
+              {/* <SidebarMenuItem>
                 <SidebarMenuButton>
                   <Settings /> Spravovat
                 </SidebarMenuButton>
-              </SidebarMenuItem>
+              </SidebarMenuItem> */}
             </SidebarMenu>
           </SidebarGroupContent>
         </SidebarGroup>

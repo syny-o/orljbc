@@ -38,7 +38,7 @@ export default function OpeningHours() {
                    dark:bg-card p-6 rounded-xl border border-border shadow-sm transition-all duration-300 
                   ${
                     isToday
-                      ? "ring-2 ring-accent/40 shadow-md scale-[1.05] bg-accent/5"
+                      ? "ring-2 ring-accent/40 shadow-md scale-[1.05] bg-accent/20"
                       : "bg-white"
                   }
                 `}
@@ -46,9 +46,9 @@ export default function OpeningHours() {
                 {/* DAY BADGE */}
                 <Badge
                   icon={<CalendarClock size={20} />}
-                  text={item.day}
+                  text={item.day} 
                   className={`mb-6 ${
-                    isToday ? "bg-accent/20" : ""
+                    isToday ? "underline text-2xl" : ""
                   }`}
                 />
 
