@@ -11,7 +11,7 @@ export default async function Page() {
   });
 
   if (!session) {
-    redirect("/signin");
+    redirect("/prihlaseni");
   }
 
   return (

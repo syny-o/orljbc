@@ -26,7 +26,7 @@ export default function Header(props: HeaderProps) {
         </div>
 
         {/* DOCTOR + LOCATION + PHONE */}
-        <div className="flex flex-col gap-y-4 xl:flex-row lg:gap-x-6 lg:gap-y-0 items-center">
+        <div className="hidden xl:flex flex-col gap-y-4 xl:flex-row lg:gap-x-6 lg:gap-y-0 items-center">
           <div className="flex gap-x-2 items-center justify-center lg:justify-normal">
             <span className="text-accent">
               <User />

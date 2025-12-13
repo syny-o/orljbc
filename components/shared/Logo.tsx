@@ -5,12 +5,12 @@ export default function Logo() {
     <div className="flex justify-center items-center">
       <Image
         src="/assets/img/logo/logo_t.png"
-        width={50}
-        height={50}
+        width={40}
+        height={40}
         alt="ORLJBC logo"
       />
-      <h3 className="text-5xl font-semibold pl-1">
-        <span className="text-gray-400">ORL</span><span className="text-accent font-bold font-secondary">JBC</span>
+      <h3 className="text-5xl pl-1">
+        <span className="text-gray-400 font-secondary font-semibold">ORL</span><span className="font-semibold text-accent font-secondary">JBC</span>
       </h3>
     </div>
   );

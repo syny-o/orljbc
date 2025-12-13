@@ -11,7 +11,7 @@ export default function SignOutButton() {
     <form
       action={async () => {
         await signOutAction();
-        router.push("/signin"); // redirect after signout
+        router.push("/prihlaseni"); // redirect after signout
       }}
     >
       <button

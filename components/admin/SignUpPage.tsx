@@ -243,7 +243,7 @@ export default function SignUpPage() {
 
         <p className="text-center text-slate-200 text-sm mt-6">
           Máte již účet?{" "}
-          <Link href="/signin" className="text-sky-400 hover:underline">
+          <Link href="/prihlaseni" className="text-sky-400 hover:underline">
             Přihlásit se
           </Link>
         </p>
