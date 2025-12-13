@@ -3,17 +3,24 @@ import { Novinka } from "@/generated/prisma/client";
 
 import { CalendarDays, ArrowBigDown } from "lucide-react";
 
-
-
 export default async function News() {
   const novinky: Novinka[] = await prisma.novinka.findMany({
-    orderBy: { vytvoreno: "desc" }, take: 6,
-  });  
+    where: {
+      publikovano: true,
+    },
+    orderBy: {
+      vytvoreno: "desc",
+    },
+    take: 6,
+  });
+
   return (
-    <section className="section bg-accent">
+    <section className="section bg-accent" id="news">
       <div className="container">
         {/* Title */}
-        <h2 className="h2 mb-10 text-center lg:text-left text-white inline-flex gap-3 items-center">Aktuality <ArrowBigDown size={48} /></h2>
+        <h2 className="h2 mb-10 text-center lg:text-left text-white inline-flex gap-3 items-center">
+          Aktuality{" "}
+        </h2>
 
         {/* Grid */}
         <div className="grid md:grid-cols-2 xl:grid-cols-3 gap-8">

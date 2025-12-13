@@ -9,12 +9,15 @@ import { LoadingButton } from "@/components/shared/LoadingButton";
 import { Input } from "@/components/ui/input";
 import { ThemeToggle } from "../shared/ThemeToggle";
 import Logo from "../shared/Logo";
+import { Eye, EyeOff } from "lucide-react";
+
 
 export default function SignInPage() {
   const router = useRouter();
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
 
   const [emailError, setEmailError] = useState("");
   const [passwordError, setPasswordError] = useState("");
@@ -68,10 +71,10 @@ export default function SignInPage() {
   return (
     <div className="min-h-screen flex items-center justify-center px-4 bg-background">
       <div className="w-full max-w-md backdrop-blur-xl p-8 rounded-2xl shadow-xl border border-white/20 bg-doctor-blue">
-      <div className="flex flex-col justify-center items-center mb-5 gap-3">
-      <ThemeToggle/>
-      <Logo />
-      </div>
+        <div className="flex flex-col justify-center items-center mb-5 gap-3">
+          <ThemeToggle />
+          <Logo />
+        </div>
         <h1 className="text-3xl font-semibold text-primary text-center mb-5">
           Přihlásit se
         </h1>
@@ -106,27 +109,41 @@ export default function SignInPage() {
             <span className="text-red-400 text-sm">{emailError}</span>
           )}
 
-          <Input
-            type="password"
-            value={password}
-            disabled={loading}
-            onChange={(e) => {
-              const value = e.target.value;
-              setPassword(value);
+          {/* PASSWORD INPUT */}
+          <div className="relative mt-5">
+            <Input
+              type={showPassword ? "text" : "password"}
+              value={password}
+              disabled={loading}
+              onChange={(e) => {
+                const value = e.target.value;
+                setPassword(value);
 
-              const err = validatePassword(value);
-              setPasswordError(err === "" ? "" : passwordError);
+                const err = validatePassword(value);
+                setPasswordError(err === "" ? "" : passwordError);
 
-              setServerError("");
-            }}
-            placeholder="Vaše heslo"
-            className={`mt-5 w-full px-4 py-2 rounded-lg bg-white/10 border text-primary
-    placeholder-slate-300 focus:outline-none focus:ring-2 focus:ring-sky-400
-    ${passwordError ? "border-red-500 shake" : "border-white/20"}`}
-          />
+                setServerError("");
+              }}
+              placeholder="Vaše heslo"
+              className={`w-full px-4 py-2 pr-12 rounded-lg bg-white/10 border text-primary
+      placeholder-slate-300 focus:outline-none focus:ring-2 focus:ring-sky-400
+      ${passwordError ? "border-red-500 shake" : "border-white/20"}`}
+            />
+
+            {/* SHOW / HIDE BUTTON */}
+            <button
+              type="button"
+              tabIndex={-1}
+              onClick={() => setShowPassword((prev) => !prev)}
+              className="absolute right-3 top-1/2 -translate-y-1/2 text-black/60 hover:text-black transition"
+              aria-label={showPassword ? "Skrýt heslo" : "Zobrazit heslo"}
+            >
+              {showPassword ? <EyeOff size={20} /> : <Eye size={20} />}
+            </button>
+          </div>
 
           {passwordError && (
-            <p className="text-red-400 text-sm">{passwordError}</p>
+            <p className="text-red-400 text-sm mt-1">{passwordError}</p>
           )}
 
           <LoadingButton
@@ -137,7 +154,9 @@ export default function SignInPage() {
             Přihlásit
           </LoadingButton>
           {serverError && (
-            <p className="text-red-500 text-sm text-center mt-1">{serverError}</p>
+            <p className="text-red-500 text-sm text-center mt-1">
+              {serverError}
+            </p>
           )}
         </form>
 

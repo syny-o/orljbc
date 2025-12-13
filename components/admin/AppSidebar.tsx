@@ -29,6 +29,7 @@ import SignOutButton from "@/components/admin/SignOutButton";
 
 import { auth } from "@/lib/auth";
 import { headers } from "next/headers";
+import { ThemeToggle } from "../shared/ThemeToggle";
 
 // Menu items.
 const items = [
@@ -42,7 +43,6 @@ const items = [
     url: "/nejcastejsi-dotazy",
     icon: CircleQuestionMark,
   },
-
 ];
 
 export async function AppSidebar() {
@@ -116,6 +116,9 @@ export async function AppSidebar() {
                   <Settings /> Spravovat
                 </SidebarMenuButton>
               </SidebarMenuItem> */}
+              <div className="mt-5 m-auto">
+                <ThemeToggle />
+              </div>
             </SidebarMenu>
           </SidebarGroupContent>
         </SidebarGroup>

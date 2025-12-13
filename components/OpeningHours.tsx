@@ -23,7 +23,7 @@ export default function OpeningHours() {
   }, []);
 
   return (
-    <section className="section bg-muted">
+    <section className="section bg-muted" id="hours">
       <div className="container">
         <h2 className="h2 mb-10 text-center">Ordinační hodiny</h2>
 

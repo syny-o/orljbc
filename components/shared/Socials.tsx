@@ -4,12 +4,12 @@ import { Facebook, Instagram } from "lucide-react";
 const socialsData = [
   {
     icon: <Facebook />,
-    path: "https://www.facebook.com/profimachining",
+    path: "https://www.facebook.com",
   },
-  {
-    icon: <Instagram />,
-    path: "https://www.instagram.com/profimachining/",
-  },
+  // {
+  //   icon: <Instagram />,
+  //   path: "https://www.instagram.com/profimachining/",
+  // },
 ];
 
 interface SocialsProps {

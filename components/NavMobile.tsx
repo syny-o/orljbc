@@ -18,7 +18,7 @@ import Logo from "./shared/Logo";
 import { Link as ScrollLink } from "react-scroll";
 import { ThemeToggle } from "./shared/ThemeToggle";
 
-import {NAVIGATION} from "@/lib/constants"
+import { NAVIGATION } from "@/lib/constants";
 
 const NavMobile = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -56,7 +56,18 @@ const NavMobile = () => {
                 </ScrollLink>
               </li>
             ))}
+            <ScrollLink
+              onClick={() => setIsOpen(false)}
+              to="hours"
+              smooth
+              offset={-120}
+              duration={500}
+              className="btn btn-sm btn-outline font-semibold cursor-pointer w-11/12 m-auto"
+            >
+              Ordinační hodiny
+            </ScrollLink>
           </ul>
+          <div></div>
           {/* SOCIAL */}
           {/* <Socials containerStyles="text-white text-xl flex gap-6 pt-10" /> */}
           <div className="pt-10 text-accent">

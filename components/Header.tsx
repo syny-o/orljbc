@@ -1,5 +1,9 @@
+"use client"
+
 import { MapPin, Phone, User } from "lucide-react";
 import { NAVIGATION } from "@/lib/constants";
+import { COMPANY_DATA } from "@/lib/constants";
+import { Link as ScrollLink } from "react-scroll";
 import Link from "next/link";
 import Logo from "./shared/Logo";
 // import { Session } from "better-auth";
@@ -32,7 +36,7 @@ export default function Header(props: HeaderProps) {
               <User />
             </span>
             <div className="font-semibold text-gray-500">
-              Mudr. Kolářová Alena
+              {COMPANY_DATA.name}
             </div>
           </div>
           <div className="flex gap-x-2 items-center justify-center lg:justify-normal">
@@ -40,18 +44,19 @@ export default function Header(props: HeaderProps) {
               <MapPin />
             </span>
             <div className="font-semibold text-gray-500">
-              Na Šumavě 550, Jablonec n/N
+              {COMPANY_DATA.address}
             </div>
           </div>
           <div className="flex gap-x-2 items-center justify-center lg:justify-normal">
             <span className="text-accent">
               <Phone />
             </span>
-            <div className="font-semibold text-gray-500">+420 483 369 269</div>
+            <div className="font-semibold text-gray-500">
+              {COMPANY_DATA.phone}
+            </div>
           </div>
           <div className="hidden lg:flex">
-
-          <ThemeToggle />
+            <ThemeToggle />
           </div>
         </div>
         {/* DESKTOP NAV */}
@@ -62,19 +67,25 @@ export default function Header(props: HeaderProps) {
                 key={navItem.name}
                 className="border-r-2 border-border px-8 last:border-r-0"
               >
-                <Link
-                  href={navItem.href}
-                  className="text-gray-500 hover:text-accent transition-all duration-300 font-semibold"
+                <ScrollLink
+                  to={navItem.href}
+                  smooth
+                  spy
+                  offset={-120} // adjust to header height
+                  duration={500}
+                  className="cursor-pointer text-gray-500 hover:text-accent transition-all duration-300 font-semibold"
+                  activeClass="text-accent"
                 >
                   {navItem.name}
-                </Link>
+                </ScrollLink>
               </li>
             ))}
+
             {props.session && (
               <li className="px-8">
                 <Link
-                  className="text-red-500 hover:text-accent transition-all duration-300 font-semibold"
                   href="/dashboard"
+                  className="text-red-500 hover:text-accent transition-all duration-300 font-semibold"
                 >
                   Admin
                 </Link>
@@ -82,9 +93,16 @@ export default function Header(props: HeaderProps) {
             )}
           </ul>
 
-          <button className="btn btn-sm btn-outline font-semibold">
+          {/* scroll button */}
+          <ScrollLink
+            to="hours"
+            smooth
+            offset={-120}
+            duration={500}
+            className="btn btn-sm btn-outline font-semibold cursor-pointer"
+          >
             Ordinační hodiny
-          </button>
+          </ScrollLink>
         </nav>
       </div>
     </header>

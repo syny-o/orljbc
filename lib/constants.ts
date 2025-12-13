@@ -1,24 +1,9 @@
 export const NAVIGATION = [
-    {
-        href: "#",
-        name: "Home"
-    },
-    {
-        href: "#",
-        name: "Služby"
-    },
-    {
-        href: "#",
-        name: "O nás"
-    },
-    {
-        href: "#",
-        name: "Kontakt"
-    },
-]
-
-
-
+  { name: "Informace", href: "info" },
+  { name: "Aktuality", href: "news" },
+  { name: "FaQ", href: "faq" },
+  { name: "Kontakt", href: "footer" },
+];
 
 export const OPENING_HOURS = [
   {
@@ -54,15 +39,12 @@ export const OPENING_HOURS = [
   },
   {
     day: "Pátek",
-    sessions: [
-      "7:30–9:00 akutní neobjednaní pacienti",
-    ],
+    sessions: ["7:30–9:00 akutní neobjednaní pacienti"],
   },
 ];
 
-
 export const FAQ_DATA = [
-{
+  {
     title: "Jak probíhá vyšetření u ORL lékaře?",
     description:
       "Vyšetření zahrnuje zhodnocení stavu uší, nosu a krku. Podle obtíží může lékař provést otoskopii, endoskopii nebo další doplňková vyšetření.",
@@ -88,3 +70,10 @@ export const FAQ_DATA = [
       "Běžné vyšetření trvá přibližně 10–20 minut. Složitější diagnostické výkony mohou vyžadovat více času.",
   },
 ];
+
+export const COMPANY_DATA = {
+  name: "MUDr. Kolářová Alena",
+  address: "Na Šumavě 43, Jablonec n. N.",
+  phone: "+420 483 369 269",
+  email: "ordinace@orljbc.cz",
+};
