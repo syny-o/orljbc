@@ -11,11 +11,10 @@ import {
 } from "@/components/ui/table";
 
 
-import DeleteDialog from "@/components/admin/DeleteDialog";
-import Logo from "../shared/Logo";
-import NovinkaDialog from "./NovinkaDialog";
+import DeleteDialog from "./DeleteDialog";
+import NovinkaDialog from "./CreateUpdateDialog";
 import { createItem } from "@/lib/serverActions/createItem";
-import { Button } from "../ui/button";
+import { Button } from "@/components/ui/button";
 import { Pen, PlusCircle } from "lucide-react";
 import { updateItem } from "@/lib/serverActions/updateItem";
 

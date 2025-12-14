@@ -1,5 +1,5 @@
 import { AppSidebar } from "@/components/admin/AppSidebar";
-import NovinkaPage from "@/components/admin/NovinkaPage";
+import NovinkaPage from "@/components/admin/novinka/ListPage";
 import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
 import { auth } from "@/lib/auth";
 import { headers } from "next/headers";

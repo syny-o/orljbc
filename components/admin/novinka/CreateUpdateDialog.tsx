@@ -56,6 +56,15 @@ export default function NovinkaDialog({
     }
   }, [isEdit, novinka]);
 
+  function handleClose() {
+    if (novinka) {
+      setTitle(novinka.nazev);
+      setContent(novinka.obsah);
+      setPublished(novinka.publikovano);
+    }
+    setOpen(false);
+  }
+
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
 
@@ -162,7 +171,7 @@ export default function NovinkaDialog({
             <Button
               type="button"
               variant="outline"
-              onClick={() => setOpen(false)}
+              onClick={handleClose}
             >
               Zrušit
             </Button>
