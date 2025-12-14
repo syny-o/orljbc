@@ -14,11 +14,6 @@ export type PrismaPromise<T> = $Public.PrismaPromise<T>
 
 
 /**
- * Model Novinka
- * 
- */
-export type Novinka = $Result.DefaultSelection<Prisma.$NovinkaPayload>
-/**
  * Model User
  * 
  */
@@ -38,6 +33,16 @@ export type Account = $Result.DefaultSelection<Prisma.$AccountPayload>
  * 
  */
 export type Verification = $Result.DefaultSelection<Prisma.$VerificationPayload>
+/**
+ * Model Novinka
+ * 
+ */
+export type Novinka = $Result.DefaultSelection<Prisma.$NovinkaPayload>
+/**
+ * Model Faq
+ * 
+ */
+export type Faq = $Result.DefaultSelection<Prisma.$FaqPayload>
 
 /**
  * ##  Prisma Client ʲˢ
@@ -46,8 +51,8 @@ export type Verification = $Result.DefaultSelection<Prisma.$VerificationPayload>
  * @example
  * ```
  * const prisma = new PrismaClient()
- * // Fetch zero or more Novinkas
- * const novinkas = await prisma.novinka.findMany()
+ * // Fetch zero or more Users
+ * const users = await prisma.user.findMany()
  * ```
  *
  *
@@ -67,8 +72,8 @@ export class PrismaClient<
    * @example
    * ```
    * const prisma = new PrismaClient()
-   * // Fetch zero or more Novinkas
-   * const novinkas = await prisma.novinka.findMany()
+   * // Fetch zero or more Users
+   * const users = await prisma.user.findMany()
    * ```
    *
    *
@@ -157,16 +162,6 @@ export class PrismaClient<
   }>>
 
       /**
-   * `prisma.novinka`: Exposes CRUD operations for the **Novinka** model.
-    * Example usage:
-    * ```ts
-    * // Fetch zero or more Novinkas
-    * const novinkas = await prisma.novinka.findMany()
-    * ```
-    */
-  get novinka(): Prisma.NovinkaDelegate<ExtArgs, ClientOptions>;
-
-  /**
    * `prisma.user`: Exposes CRUD operations for the **User** model.
     * Example usage:
     * ```ts
@@ -205,6 +200,26 @@ export class PrismaClient<
     * ```
     */
   get verification(): Prisma.VerificationDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.novinka`: Exposes CRUD operations for the **Novinka** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Novinkas
+    * const novinkas = await prisma.novinka.findMany()
+    * ```
+    */
+  get novinka(): Prisma.NovinkaDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.faq`: Exposes CRUD operations for the **Faq** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Faqs
+    * const faqs = await prisma.faq.findMany()
+    * ```
+    */
+  get faq(): Prisma.FaqDelegate<ExtArgs, ClientOptions>;
 }
 
 export namespace Prisma {
@@ -639,11 +654,12 @@ export namespace Prisma {
 
 
   export const ModelName: {
-    Novinka: 'Novinka',
     User: 'User',
     Session: 'Session',
     Account: 'Account',
-    Verification: 'Verification'
+    Verification: 'Verification',
+    Novinka: 'Novinka',
+    Faq: 'Faq'
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -659,84 +675,10 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "novinka" | "user" | "session" | "account" | "verification"
+      modelProps: "user" | "session" | "account" | "verification" | "novinka" | "faq"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
-      Novinka: {
-        payload: Prisma.$NovinkaPayload<ExtArgs>
-        fields: Prisma.NovinkaFieldRefs
-        operations: {
-          findUnique: {
-            args: Prisma.NovinkaFindUniqueArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$NovinkaPayload> | null
-          }
-          findUniqueOrThrow: {
-            args: Prisma.NovinkaFindUniqueOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$NovinkaPayload>
-          }
-          findFirst: {
-            args: Prisma.NovinkaFindFirstArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$NovinkaPayload> | null
-          }
-          findFirstOrThrow: {
-            args: Prisma.NovinkaFindFirstOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$NovinkaPayload>
-          }
-          findMany: {
-            args: Prisma.NovinkaFindManyArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$NovinkaPayload>[]
-          }
-          create: {
-            args: Prisma.NovinkaCreateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$NovinkaPayload>
-          }
-          createMany: {
-            args: Prisma.NovinkaCreateManyArgs<ExtArgs>
-            result: BatchPayload
-          }
-          createManyAndReturn: {
-            args: Prisma.NovinkaCreateManyAndReturnArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$NovinkaPayload>[]
-          }
-          delete: {
-            args: Prisma.NovinkaDeleteArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$NovinkaPayload>
-          }
-          update: {
-            args: Prisma.NovinkaUpdateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$NovinkaPayload>
-          }
-          deleteMany: {
-            args: Prisma.NovinkaDeleteManyArgs<ExtArgs>
-            result: BatchPayload
-          }
-          updateMany: {
-            args: Prisma.NovinkaUpdateManyArgs<ExtArgs>
-            result: BatchPayload
-          }
-          updateManyAndReturn: {
-            args: Prisma.NovinkaUpdateManyAndReturnArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$NovinkaPayload>[]
-          }
-          upsert: {
-            args: Prisma.NovinkaUpsertArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$NovinkaPayload>
-          }
-          aggregate: {
-            args: Prisma.NovinkaAggregateArgs<ExtArgs>
-            result: $Utils.Optional<AggregateNovinka>
-          }
-          groupBy: {
-            args: Prisma.NovinkaGroupByArgs<ExtArgs>
-            result: $Utils.Optional<NovinkaGroupByOutputType>[]
-          }
-          count: {
-            args: Prisma.NovinkaCountArgs<ExtArgs>
-            result: $Utils.Optional<NovinkaCountAggregateOutputType> | number
-          }
-        }
-      }
       User: {
         payload: Prisma.$UserPayload<ExtArgs>
         fields: Prisma.UserFieldRefs
@@ -1033,6 +975,154 @@ export namespace Prisma {
           }
         }
       }
+      Novinka: {
+        payload: Prisma.$NovinkaPayload<ExtArgs>
+        fields: Prisma.NovinkaFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.NovinkaFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$NovinkaPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.NovinkaFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$NovinkaPayload>
+          }
+          findFirst: {
+            args: Prisma.NovinkaFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$NovinkaPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.NovinkaFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$NovinkaPayload>
+          }
+          findMany: {
+            args: Prisma.NovinkaFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$NovinkaPayload>[]
+          }
+          create: {
+            args: Prisma.NovinkaCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$NovinkaPayload>
+          }
+          createMany: {
+            args: Prisma.NovinkaCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.NovinkaCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$NovinkaPayload>[]
+          }
+          delete: {
+            args: Prisma.NovinkaDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$NovinkaPayload>
+          }
+          update: {
+            args: Prisma.NovinkaUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$NovinkaPayload>
+          }
+          deleteMany: {
+            args: Prisma.NovinkaDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.NovinkaUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.NovinkaUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$NovinkaPayload>[]
+          }
+          upsert: {
+            args: Prisma.NovinkaUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$NovinkaPayload>
+          }
+          aggregate: {
+            args: Prisma.NovinkaAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateNovinka>
+          }
+          groupBy: {
+            args: Prisma.NovinkaGroupByArgs<ExtArgs>
+            result: $Utils.Optional<NovinkaGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.NovinkaCountArgs<ExtArgs>
+            result: $Utils.Optional<NovinkaCountAggregateOutputType> | number
+          }
+        }
+      }
+      Faq: {
+        payload: Prisma.$FaqPayload<ExtArgs>
+        fields: Prisma.FaqFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.FaqFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$FaqPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.FaqFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$FaqPayload>
+          }
+          findFirst: {
+            args: Prisma.FaqFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$FaqPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.FaqFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$FaqPayload>
+          }
+          findMany: {
+            args: Prisma.FaqFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$FaqPayload>[]
+          }
+          create: {
+            args: Prisma.FaqCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$FaqPayload>
+          }
+          createMany: {
+            args: Prisma.FaqCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.FaqCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$FaqPayload>[]
+          }
+          delete: {
+            args: Prisma.FaqDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$FaqPayload>
+          }
+          update: {
+            args: Prisma.FaqUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$FaqPayload>
+          }
+          deleteMany: {
+            args: Prisma.FaqDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.FaqUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.FaqUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$FaqPayload>[]
+          }
+          upsert: {
+            args: Prisma.FaqUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$FaqPayload>
+          }
+          aggregate: {
+            args: Prisma.FaqAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateFaq>
+          }
+          groupBy: {
+            args: Prisma.FaqGroupByArgs<ExtArgs>
+            result: $Utils.Optional<FaqGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.FaqCountArgs<ExtArgs>
+            result: $Utils.Optional<FaqCountAggregateOutputType> | number
+          }
+        }
+      }
     }
   } & {
     other: {
@@ -1125,11 +1215,12 @@ export namespace Prisma {
     omit?: Prisma.GlobalOmitConfig
   }
   export type GlobalOmitConfig = {
-    novinka?: NovinkaOmit
     user?: UserOmit
     session?: SessionOmit
     account?: AccountOmit
     verification?: VerificationOmit
+    novinka?: NovinkaOmit
+    faq?: FaqOmit
   }
 
   /* Types for Logging */
@@ -1248,1048 +1339,6 @@ export namespace Prisma {
   /**
    * Models
    */
-
-  /**
-   * Model Novinka
-   */
-
-  export type AggregateNovinka = {
-    _count: NovinkaCountAggregateOutputType | null
-    _avg: NovinkaAvgAggregateOutputType | null
-    _sum: NovinkaSumAggregateOutputType | null
-    _min: NovinkaMinAggregateOutputType | null
-    _max: NovinkaMaxAggregateOutputType | null
-  }
-
-  export type NovinkaAvgAggregateOutputType = {
-    id: number | null
-  }
-
-  export type NovinkaSumAggregateOutputType = {
-    id: number | null
-  }
-
-  export type NovinkaMinAggregateOutputType = {
-    id: number | null
-    nazev: string | null
-    obsah: string | null
-    publikovano: boolean | null
-    vytvoreno: Date | null
-    aktualizovano: Date | null
-  }
-
-  export type NovinkaMaxAggregateOutputType = {
-    id: number | null
-    nazev: string | null
-    obsah: string | null
-    publikovano: boolean | null
-    vytvoreno: Date | null
-    aktualizovano: Date | null
-  }
-
-  export type NovinkaCountAggregateOutputType = {
-    id: number
-    nazev: number
-    obsah: number
-    publikovano: number
-    vytvoreno: number
-    aktualizovano: number
-    _all: number
-  }
-
-
-  export type NovinkaAvgAggregateInputType = {
-    id?: true
-  }
-
-  export type NovinkaSumAggregateInputType = {
-    id?: true
-  }
-
-  export type NovinkaMinAggregateInputType = {
-    id?: true
-    nazev?: true
-    obsah?: true
-    publikovano?: true
-    vytvoreno?: true
-    aktualizovano?: true
-  }
-
-  export type NovinkaMaxAggregateInputType = {
-    id?: true
-    nazev?: true
-    obsah?: true
-    publikovano?: true
-    vytvoreno?: true
-    aktualizovano?: true
-  }
-
-  export type NovinkaCountAggregateInputType = {
-    id?: true
-    nazev?: true
-    obsah?: true
-    publikovano?: true
-    vytvoreno?: true
-    aktualizovano?: true
-    _all?: true
-  }
-
-  export type NovinkaAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Filter which Novinka to aggregate.
-     */
-    where?: NovinkaWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of Novinkas to fetch.
-     */
-    orderBy?: NovinkaOrderByWithRelationInput | NovinkaOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the start position
-     */
-    cursor?: NovinkaWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` Novinkas from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` Novinkas.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Count returned Novinkas
-    **/
-    _count?: true | NovinkaCountAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to average
-    **/
-    _avg?: NovinkaAvgAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to sum
-    **/
-    _sum?: NovinkaSumAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to find the minimum value
-    **/
-    _min?: NovinkaMinAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to find the maximum value
-    **/
-    _max?: NovinkaMaxAggregateInputType
-  }
-
-  export type GetNovinkaAggregateType<T extends NovinkaAggregateArgs> = {
-        [P in keyof T & keyof AggregateNovinka]: P extends '_count' | 'count'
-      ? T[P] extends true
-        ? number
-        : GetScalarType<T[P], AggregateNovinka[P]>
-      : GetScalarType<T[P], AggregateNovinka[P]>
-  }
-
-
-
-
-  export type NovinkaGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: NovinkaWhereInput
-    orderBy?: NovinkaOrderByWithAggregationInput | NovinkaOrderByWithAggregationInput[]
-    by: NovinkaScalarFieldEnum[] | NovinkaScalarFieldEnum
-    having?: NovinkaScalarWhereWithAggregatesInput
-    take?: number
-    skip?: number
-    _count?: NovinkaCountAggregateInputType | true
-    _avg?: NovinkaAvgAggregateInputType
-    _sum?: NovinkaSumAggregateInputType
-    _min?: NovinkaMinAggregateInputType
-    _max?: NovinkaMaxAggregateInputType
-  }
-
-  export type NovinkaGroupByOutputType = {
-    id: number
-    nazev: string
-    obsah: string
-    publikovano: boolean
-    vytvoreno: Date
-    aktualizovano: Date
-    _count: NovinkaCountAggregateOutputType | null
-    _avg: NovinkaAvgAggregateOutputType | null
-    _sum: NovinkaSumAggregateOutputType | null
-    _min: NovinkaMinAggregateOutputType | null
-    _max: NovinkaMaxAggregateOutputType | null
-  }
-
-  type GetNovinkaGroupByPayload<T extends NovinkaGroupByArgs> = Prisma.PrismaPromise<
-    Array<
-      PickEnumerable<NovinkaGroupByOutputType, T['by']> &
-        {
-          [P in ((keyof T) & (keyof NovinkaGroupByOutputType))]: P extends '_count'
-            ? T[P] extends boolean
-              ? number
-              : GetScalarType<T[P], NovinkaGroupByOutputType[P]>
-            : GetScalarType<T[P], NovinkaGroupByOutputType[P]>
-        }
-      >
-    >
-
-
-  export type NovinkaSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    id?: boolean
-    nazev?: boolean
-    obsah?: boolean
-    publikovano?: boolean
-    vytvoreno?: boolean
-    aktualizovano?: boolean
-  }, ExtArgs["result"]["novinka"]>
-
-  export type NovinkaSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    id?: boolean
-    nazev?: boolean
-    obsah?: boolean
-    publikovano?: boolean
-    vytvoreno?: boolean
-    aktualizovano?: boolean
-  }, ExtArgs["result"]["novinka"]>
-
-  export type NovinkaSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    id?: boolean
-    nazev?: boolean
-    obsah?: boolean
-    publikovano?: boolean
-    vytvoreno?: boolean
-    aktualizovano?: boolean
-  }, ExtArgs["result"]["novinka"]>
-
-  export type NovinkaSelectScalar = {
-    id?: boolean
-    nazev?: boolean
-    obsah?: boolean
-    publikovano?: boolean
-    vytvoreno?: boolean
-    aktualizovano?: boolean
-  }
-
-  export type NovinkaOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "nazev" | "obsah" | "publikovano" | "vytvoreno" | "aktualizovano", ExtArgs["result"]["novinka"]>
-
-  export type $NovinkaPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    name: "Novinka"
-    objects: {}
-    scalars: $Extensions.GetPayloadResult<{
-      id: number
-      nazev: string
-      obsah: string
-      publikovano: boolean
-      vytvoreno: Date
-      aktualizovano: Date
-    }, ExtArgs["result"]["novinka"]>
-    composites: {}
-  }
-
-  type NovinkaGetPayload<S extends boolean | null | undefined | NovinkaDefaultArgs> = $Result.GetResult<Prisma.$NovinkaPayload, S>
-
-  type NovinkaCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
-    Omit<NovinkaFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
-      select?: NovinkaCountAggregateInputType | true
-    }
-
-  export interface NovinkaDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
-    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Novinka'], meta: { name: 'Novinka' } }
-    /**
-     * Find zero or one Novinka that matches the filter.
-     * @param {NovinkaFindUniqueArgs} args - Arguments to find a Novinka
-     * @example
-     * // Get one Novinka
-     * const novinka = await prisma.novinka.findUnique({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findUnique<T extends NovinkaFindUniqueArgs>(args: SelectSubset<T, NovinkaFindUniqueArgs<ExtArgs>>): Prisma__NovinkaClient<$Result.GetResult<Prisma.$NovinkaPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Find one Novinka that matches the filter or throw an error with `error.code='P2025'`
-     * if no matches were found.
-     * @param {NovinkaFindUniqueOrThrowArgs} args - Arguments to find a Novinka
-     * @example
-     * // Get one Novinka
-     * const novinka = await prisma.novinka.findUniqueOrThrow({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findUniqueOrThrow<T extends NovinkaFindUniqueOrThrowArgs>(args: SelectSubset<T, NovinkaFindUniqueOrThrowArgs<ExtArgs>>): Prisma__NovinkaClient<$Result.GetResult<Prisma.$NovinkaPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Find the first Novinka that matches the filter.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {NovinkaFindFirstArgs} args - Arguments to find a Novinka
-     * @example
-     * // Get one Novinka
-     * const novinka = await prisma.novinka.findFirst({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findFirst<T extends NovinkaFindFirstArgs>(args?: SelectSubset<T, NovinkaFindFirstArgs<ExtArgs>>): Prisma__NovinkaClient<$Result.GetResult<Prisma.$NovinkaPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Find the first Novinka that matches the filter or
-     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {NovinkaFindFirstOrThrowArgs} args - Arguments to find a Novinka
-     * @example
-     * // Get one Novinka
-     * const novinka = await prisma.novinka.findFirstOrThrow({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findFirstOrThrow<T extends NovinkaFindFirstOrThrowArgs>(args?: SelectSubset<T, NovinkaFindFirstOrThrowArgs<ExtArgs>>): Prisma__NovinkaClient<$Result.GetResult<Prisma.$NovinkaPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Find zero or more Novinkas that matches the filter.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {NovinkaFindManyArgs} args - Arguments to filter and select certain fields only.
-     * @example
-     * // Get all Novinkas
-     * const novinkas = await prisma.novinka.findMany()
-     * 
-     * // Get first 10 Novinkas
-     * const novinkas = await prisma.novinka.findMany({ take: 10 })
-     * 
-     * // Only select the `id`
-     * const novinkaWithIdOnly = await prisma.novinka.findMany({ select: { id: true } })
-     * 
-     */
-    findMany<T extends NovinkaFindManyArgs>(args?: SelectSubset<T, NovinkaFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$NovinkaPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
-
-    /**
-     * Create a Novinka.
-     * @param {NovinkaCreateArgs} args - Arguments to create a Novinka.
-     * @example
-     * // Create one Novinka
-     * const Novinka = await prisma.novinka.create({
-     *   data: {
-     *     // ... data to create a Novinka
-     *   }
-     * })
-     * 
-     */
-    create<T extends NovinkaCreateArgs>(args: SelectSubset<T, NovinkaCreateArgs<ExtArgs>>): Prisma__NovinkaClient<$Result.GetResult<Prisma.$NovinkaPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Create many Novinkas.
-     * @param {NovinkaCreateManyArgs} args - Arguments to create many Novinkas.
-     * @example
-     * // Create many Novinkas
-     * const novinka = await prisma.novinka.createMany({
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     *     
-     */
-    createMany<T extends NovinkaCreateManyArgs>(args?: SelectSubset<T, NovinkaCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Create many Novinkas and returns the data saved in the database.
-     * @param {NovinkaCreateManyAndReturnArgs} args - Arguments to create many Novinkas.
-     * @example
-     * // Create many Novinkas
-     * const novinka = await prisma.novinka.createManyAndReturn({
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * 
-     * // Create many Novinkas and only return the `id`
-     * const novinkaWithIdOnly = await prisma.novinka.createManyAndReturn({
-     *   select: { id: true },
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * 
-     */
-    createManyAndReturn<T extends NovinkaCreateManyAndReturnArgs>(args?: SelectSubset<T, NovinkaCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$NovinkaPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
-
-    /**
-     * Delete a Novinka.
-     * @param {NovinkaDeleteArgs} args - Arguments to delete one Novinka.
-     * @example
-     * // Delete one Novinka
-     * const Novinka = await prisma.novinka.delete({
-     *   where: {
-     *     // ... filter to delete one Novinka
-     *   }
-     * })
-     * 
-     */
-    delete<T extends NovinkaDeleteArgs>(args: SelectSubset<T, NovinkaDeleteArgs<ExtArgs>>): Prisma__NovinkaClient<$Result.GetResult<Prisma.$NovinkaPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Update one Novinka.
-     * @param {NovinkaUpdateArgs} args - Arguments to update one Novinka.
-     * @example
-     * // Update one Novinka
-     * const novinka = await prisma.novinka.update({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: {
-     *     // ... provide data here
-     *   }
-     * })
-     * 
-     */
-    update<T extends NovinkaUpdateArgs>(args: SelectSubset<T, NovinkaUpdateArgs<ExtArgs>>): Prisma__NovinkaClient<$Result.GetResult<Prisma.$NovinkaPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Delete zero or more Novinkas.
-     * @param {NovinkaDeleteManyArgs} args - Arguments to filter Novinkas to delete.
-     * @example
-     * // Delete a few Novinkas
-     * const { count } = await prisma.novinka.deleteMany({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     * 
-     */
-    deleteMany<T extends NovinkaDeleteManyArgs>(args?: SelectSubset<T, NovinkaDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Update zero or more Novinkas.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {NovinkaUpdateManyArgs} args - Arguments to update one or more rows.
-     * @example
-     * // Update many Novinkas
-     * const novinka = await prisma.novinka.updateMany({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: {
-     *     // ... provide data here
-     *   }
-     * })
-     * 
-     */
-    updateMany<T extends NovinkaUpdateManyArgs>(args: SelectSubset<T, NovinkaUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Update zero or more Novinkas and returns the data updated in the database.
-     * @param {NovinkaUpdateManyAndReturnArgs} args - Arguments to update many Novinkas.
-     * @example
-     * // Update many Novinkas
-     * const novinka = await prisma.novinka.updateManyAndReturn({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * 
-     * // Update zero or more Novinkas and only return the `id`
-     * const novinkaWithIdOnly = await prisma.novinka.updateManyAndReturn({
-     *   select: { id: true },
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * 
-     */
-    updateManyAndReturn<T extends NovinkaUpdateManyAndReturnArgs>(args: SelectSubset<T, NovinkaUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$NovinkaPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
-
-    /**
-     * Create or update one Novinka.
-     * @param {NovinkaUpsertArgs} args - Arguments to update or create a Novinka.
-     * @example
-     * // Update or create a Novinka
-     * const novinka = await prisma.novinka.upsert({
-     *   create: {
-     *     // ... data to create a Novinka
-     *   },
-     *   update: {
-     *     // ... in case it already exists, update
-     *   },
-     *   where: {
-     *     // ... the filter for the Novinka we want to update
-     *   }
-     * })
-     */
-    upsert<T extends NovinkaUpsertArgs>(args: SelectSubset<T, NovinkaUpsertArgs<ExtArgs>>): Prisma__NovinkaClient<$Result.GetResult<Prisma.$NovinkaPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-
-    /**
-     * Count the number of Novinkas.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {NovinkaCountArgs} args - Arguments to filter Novinkas to count.
-     * @example
-     * // Count the number of Novinkas
-     * const count = await prisma.novinka.count({
-     *   where: {
-     *     // ... the filter for the Novinkas we want to count
-     *   }
-     * })
-    **/
-    count<T extends NovinkaCountArgs>(
-      args?: Subset<T, NovinkaCountArgs>,
-    ): Prisma.PrismaPromise<
-      T extends $Utils.Record<'select', any>
-        ? T['select'] extends true
-          ? number
-          : GetScalarType<T['select'], NovinkaCountAggregateOutputType>
-        : number
-    >
-
-    /**
-     * Allows you to perform aggregations operations on a Novinka.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {NovinkaAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
-     * @example
-     * // Ordered by age ascending
-     * // Where email contains prisma.io
-     * // Limited to the 10 users
-     * const aggregations = await prisma.user.aggregate({
-     *   _avg: {
-     *     age: true,
-     *   },
-     *   where: {
-     *     email: {
-     *       contains: "prisma.io",
-     *     },
-     *   },
-     *   orderBy: {
-     *     age: "asc",
-     *   },
-     *   take: 10,
-     * })
-    **/
-    aggregate<T extends NovinkaAggregateArgs>(args: Subset<T, NovinkaAggregateArgs>): Prisma.PrismaPromise<GetNovinkaAggregateType<T>>
-
-    /**
-     * Group by Novinka.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {NovinkaGroupByArgs} args - Group by arguments.
-     * @example
-     * // Group by city, order by createdAt, get count
-     * const result = await prisma.user.groupBy({
-     *   by: ['city', 'createdAt'],
-     *   orderBy: {
-     *     createdAt: true
-     *   },
-     *   _count: {
-     *     _all: true
-     *   },
-     * })
-     * 
-    **/
-    groupBy<
-      T extends NovinkaGroupByArgs,
-      HasSelectOrTake extends Or<
-        Extends<'skip', Keys<T>>,
-        Extends<'take', Keys<T>>
-      >,
-      OrderByArg extends True extends HasSelectOrTake
-        ? { orderBy: NovinkaGroupByArgs['orderBy'] }
-        : { orderBy?: NovinkaGroupByArgs['orderBy'] },
-      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
-      ByFields extends MaybeTupleToUnion<T['by']>,
-      ByValid extends Has<ByFields, OrderFields>,
-      HavingFields extends GetHavingFields<T['having']>,
-      HavingValid extends Has<ByFields, HavingFields>,
-      ByEmpty extends T['by'] extends never[] ? True : False,
-      InputErrors extends ByEmpty extends True
-      ? `Error: "by" must not be empty.`
-      : HavingValid extends False
-      ? {
-          [P in HavingFields]: P extends ByFields
-            ? never
-            : P extends string
-            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
-            : [
-                Error,
-                'Field ',
-                P,
-                ` in "having" needs to be provided in "by"`,
-              ]
-        }[HavingFields]
-      : 'take' extends Keys<T>
-      ? 'orderBy' extends Keys<T>
-        ? ByValid extends True
-          ? {}
-          : {
-              [P in OrderFields]: P extends ByFields
-                ? never
-                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-            }[OrderFields]
-        : 'Error: If you provide "take", you also need to provide "orderBy"'
-      : 'skip' extends Keys<T>
-      ? 'orderBy' extends Keys<T>
-        ? ByValid extends True
-          ? {}
-          : {
-              [P in OrderFields]: P extends ByFields
-                ? never
-                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-            }[OrderFields]
-        : 'Error: If you provide "skip", you also need to provide "orderBy"'
-      : ByValid extends True
-      ? {}
-      : {
-          [P in OrderFields]: P extends ByFields
-            ? never
-            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-        }[OrderFields]
-    >(args: SubsetIntersection<T, NovinkaGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetNovinkaGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
-  /**
-   * Fields of the Novinka model
-   */
-  readonly fields: NovinkaFieldRefs;
-  }
-
-  /**
-   * The delegate class that acts as a "Promise-like" for Novinka.
-   * Why is this prefixed with `Prisma__`?
-   * Because we want to prevent naming conflicts as mentioned in
-   * https://github.com/prisma/prisma-client-js/issues/707
-   */
-  export interface Prisma__NovinkaClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
-    readonly [Symbol.toStringTag]: "PrismaPromise"
-    /**
-     * Attaches callbacks for the resolution and/or rejection of the Promise.
-     * @param onfulfilled The callback to execute when the Promise is resolved.
-     * @param onrejected The callback to execute when the Promise is rejected.
-     * @returns A Promise for the completion of which ever callback is executed.
-     */
-    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
-    /**
-     * Attaches a callback for only the rejection of the Promise.
-     * @param onrejected The callback to execute when the Promise is rejected.
-     * @returns A Promise for the completion of the callback.
-     */
-    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
-    /**
-     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
-     * resolved value cannot be modified from the callback.
-     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
-     * @returns A Promise for the completion of the callback.
-     */
-    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
-  }
-
-
-
-
-  /**
-   * Fields of the Novinka model
-   */
-  interface NovinkaFieldRefs {
-    readonly id: FieldRef<"Novinka", 'Int'>
-    readonly nazev: FieldRef<"Novinka", 'String'>
-    readonly obsah: FieldRef<"Novinka", 'String'>
-    readonly publikovano: FieldRef<"Novinka", 'Boolean'>
-    readonly vytvoreno: FieldRef<"Novinka", 'DateTime'>
-    readonly aktualizovano: FieldRef<"Novinka", 'DateTime'>
-  }
-    
-
-  // Custom InputTypes
-  /**
-   * Novinka findUnique
-   */
-  export type NovinkaFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Novinka
-     */
-    select?: NovinkaSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Novinka
-     */
-    omit?: NovinkaOmit<ExtArgs> | null
-    /**
-     * Filter, which Novinka to fetch.
-     */
-    where: NovinkaWhereUniqueInput
-  }
-
-  /**
-   * Novinka findUniqueOrThrow
-   */
-  export type NovinkaFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Novinka
-     */
-    select?: NovinkaSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Novinka
-     */
-    omit?: NovinkaOmit<ExtArgs> | null
-    /**
-     * Filter, which Novinka to fetch.
-     */
-    where: NovinkaWhereUniqueInput
-  }
-
-  /**
-   * Novinka findFirst
-   */
-  export type NovinkaFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Novinka
-     */
-    select?: NovinkaSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Novinka
-     */
-    omit?: NovinkaOmit<ExtArgs> | null
-    /**
-     * Filter, which Novinka to fetch.
-     */
-    where?: NovinkaWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of Novinkas to fetch.
-     */
-    orderBy?: NovinkaOrderByWithRelationInput | NovinkaOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for searching for Novinkas.
-     */
-    cursor?: NovinkaWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` Novinkas from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` Novinkas.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
-     * 
-     * Filter by unique combinations of Novinkas.
-     */
-    distinct?: NovinkaScalarFieldEnum | NovinkaScalarFieldEnum[]
-  }
-
-  /**
-   * Novinka findFirstOrThrow
-   */
-  export type NovinkaFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Novinka
-     */
-    select?: NovinkaSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Novinka
-     */
-    omit?: NovinkaOmit<ExtArgs> | null
-    /**
-     * Filter, which Novinka to fetch.
-     */
-    where?: NovinkaWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of Novinkas to fetch.
-     */
-    orderBy?: NovinkaOrderByWithRelationInput | NovinkaOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for searching for Novinkas.
-     */
-    cursor?: NovinkaWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` Novinkas from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` Novinkas.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
-     * 
-     * Filter by unique combinations of Novinkas.
-     */
-    distinct?: NovinkaScalarFieldEnum | NovinkaScalarFieldEnum[]
-  }
-
-  /**
-   * Novinka findMany
-   */
-  export type NovinkaFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Novinka
-     */
-    select?: NovinkaSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Novinka
-     */
-    omit?: NovinkaOmit<ExtArgs> | null
-    /**
-     * Filter, which Novinkas to fetch.
-     */
-    where?: NovinkaWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of Novinkas to fetch.
-     */
-    orderBy?: NovinkaOrderByWithRelationInput | NovinkaOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for listing Novinkas.
-     */
-    cursor?: NovinkaWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` Novinkas from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` Novinkas.
-     */
-    skip?: number
-    distinct?: NovinkaScalarFieldEnum | NovinkaScalarFieldEnum[]
-  }
-
-  /**
-   * Novinka create
-   */
-  export type NovinkaCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Novinka
-     */
-    select?: NovinkaSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Novinka
-     */
-    omit?: NovinkaOmit<ExtArgs> | null
-    /**
-     * The data needed to create a Novinka.
-     */
-    data: XOR<NovinkaCreateInput, NovinkaUncheckedCreateInput>
-  }
-
-  /**
-   * Novinka createMany
-   */
-  export type NovinkaCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * The data used to create many Novinkas.
-     */
-    data: NovinkaCreateManyInput | NovinkaCreateManyInput[]
-    skipDuplicates?: boolean
-  }
-
-  /**
-   * Novinka createManyAndReturn
-   */
-  export type NovinkaCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Novinka
-     */
-    select?: NovinkaSelectCreateManyAndReturn<ExtArgs> | null
-    /**
-     * Omit specific fields from the Novinka
-     */
-    omit?: NovinkaOmit<ExtArgs> | null
-    /**
-     * The data used to create many Novinkas.
-     */
-    data: NovinkaCreateManyInput | NovinkaCreateManyInput[]
-    skipDuplicates?: boolean
-  }
-
-  /**
-   * Novinka update
-   */
-  export type NovinkaUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Novinka
-     */
-    select?: NovinkaSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Novinka
-     */
-    omit?: NovinkaOmit<ExtArgs> | null
-    /**
-     * The data needed to update a Novinka.
-     */
-    data: XOR<NovinkaUpdateInput, NovinkaUncheckedUpdateInput>
-    /**
-     * Choose, which Novinka to update.
-     */
-    where: NovinkaWhereUniqueInput
-  }
-
-  /**
-   * Novinka updateMany
-   */
-  export type NovinkaUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * The data used to update Novinkas.
-     */
-    data: XOR<NovinkaUpdateManyMutationInput, NovinkaUncheckedUpdateManyInput>
-    /**
-     * Filter which Novinkas to update
-     */
-    where?: NovinkaWhereInput
-    /**
-     * Limit how many Novinkas to update.
-     */
-    limit?: number
-  }
-
-  /**
-   * Novinka updateManyAndReturn
-   */
-  export type NovinkaUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Novinka
-     */
-    select?: NovinkaSelectUpdateManyAndReturn<ExtArgs> | null
-    /**
-     * Omit specific fields from the Novinka
-     */
-    omit?: NovinkaOmit<ExtArgs> | null
-    /**
-     * The data used to update Novinkas.
-     */
-    data: XOR<NovinkaUpdateManyMutationInput, NovinkaUncheckedUpdateManyInput>
-    /**
-     * Filter which Novinkas to update
-     */
-    where?: NovinkaWhereInput
-    /**
-     * Limit how many Novinkas to update.
-     */
-    limit?: number
-  }
-
-  /**
-   * Novinka upsert
-   */
-  export type NovinkaUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Novinka
-     */
-    select?: NovinkaSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Novinka
-     */
-    omit?: NovinkaOmit<ExtArgs> | null
-    /**
-     * The filter to search for the Novinka to update in case it exists.
-     */
-    where: NovinkaWhereUniqueInput
-    /**
-     * In case the Novinka found by the `where` argument doesn't exist, create a new Novinka with this data.
-     */
-    create: XOR<NovinkaCreateInput, NovinkaUncheckedCreateInput>
-    /**
-     * In case the Novinka was found with the provided `where` argument, update it with this data.
-     */
-    update: XOR<NovinkaUpdateInput, NovinkaUncheckedUpdateInput>
-  }
-
-  /**
-   * Novinka delete
-   */
-  export type NovinkaDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Novinka
-     */
-    select?: NovinkaSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Novinka
-     */
-    omit?: NovinkaOmit<ExtArgs> | null
-    /**
-     * Filter which Novinka to delete.
-     */
-    where: NovinkaWhereUniqueInput
-  }
-
-  /**
-   * Novinka deleteMany
-   */
-  export type NovinkaDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Filter which Novinkas to delete
-     */
-    where?: NovinkaWhereInput
-    /**
-     * Limit how many Novinkas to delete.
-     */
-    limit?: number
-  }
-
-  /**
-   * Novinka without action
-   */
-  export type NovinkaDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Novinka
-     */
-    select?: NovinkaSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Novinka
-     */
-    omit?: NovinkaOmit<ExtArgs> | null
-  }
-
 
   /**
    * Model User
@@ -6683,6 +5732,2107 @@ export namespace Prisma {
 
 
   /**
+   * Model Novinka
+   */
+
+  export type AggregateNovinka = {
+    _count: NovinkaCountAggregateOutputType | null
+    _avg: NovinkaAvgAggregateOutputType | null
+    _sum: NovinkaSumAggregateOutputType | null
+    _min: NovinkaMinAggregateOutputType | null
+    _max: NovinkaMaxAggregateOutputType | null
+  }
+
+  export type NovinkaAvgAggregateOutputType = {
+    id: number | null
+  }
+
+  export type NovinkaSumAggregateOutputType = {
+    id: number | null
+  }
+
+  export type NovinkaMinAggregateOutputType = {
+    id: number | null
+    nazev: string | null
+    obsah: string | null
+    publikovano: boolean | null
+    vytvoreno: Date | null
+    aktualizovano: Date | null
+  }
+
+  export type NovinkaMaxAggregateOutputType = {
+    id: number | null
+    nazev: string | null
+    obsah: string | null
+    publikovano: boolean | null
+    vytvoreno: Date | null
+    aktualizovano: Date | null
+  }
+
+  export type NovinkaCountAggregateOutputType = {
+    id: number
+    nazev: number
+    obsah: number
+    publikovano: number
+    vytvoreno: number
+    aktualizovano: number
+    _all: number
+  }
+
+
+  export type NovinkaAvgAggregateInputType = {
+    id?: true
+  }
+
+  export type NovinkaSumAggregateInputType = {
+    id?: true
+  }
+
+  export type NovinkaMinAggregateInputType = {
+    id?: true
+    nazev?: true
+    obsah?: true
+    publikovano?: true
+    vytvoreno?: true
+    aktualizovano?: true
+  }
+
+  export type NovinkaMaxAggregateInputType = {
+    id?: true
+    nazev?: true
+    obsah?: true
+    publikovano?: true
+    vytvoreno?: true
+    aktualizovano?: true
+  }
+
+  export type NovinkaCountAggregateInputType = {
+    id?: true
+    nazev?: true
+    obsah?: true
+    publikovano?: true
+    vytvoreno?: true
+    aktualizovano?: true
+    _all?: true
+  }
+
+  export type NovinkaAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Novinka to aggregate.
+     */
+    where?: NovinkaWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Novinkas to fetch.
+     */
+    orderBy?: NovinkaOrderByWithRelationInput | NovinkaOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: NovinkaWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Novinkas from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Novinkas.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned Novinkas
+    **/
+    _count?: true | NovinkaCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: NovinkaAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: NovinkaSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: NovinkaMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: NovinkaMaxAggregateInputType
+  }
+
+  export type GetNovinkaAggregateType<T extends NovinkaAggregateArgs> = {
+        [P in keyof T & keyof AggregateNovinka]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateNovinka[P]>
+      : GetScalarType<T[P], AggregateNovinka[P]>
+  }
+
+
+
+
+  export type NovinkaGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: NovinkaWhereInput
+    orderBy?: NovinkaOrderByWithAggregationInput | NovinkaOrderByWithAggregationInput[]
+    by: NovinkaScalarFieldEnum[] | NovinkaScalarFieldEnum
+    having?: NovinkaScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: NovinkaCountAggregateInputType | true
+    _avg?: NovinkaAvgAggregateInputType
+    _sum?: NovinkaSumAggregateInputType
+    _min?: NovinkaMinAggregateInputType
+    _max?: NovinkaMaxAggregateInputType
+  }
+
+  export type NovinkaGroupByOutputType = {
+    id: number
+    nazev: string
+    obsah: string
+    publikovano: boolean
+    vytvoreno: Date
+    aktualizovano: Date
+    _count: NovinkaCountAggregateOutputType | null
+    _avg: NovinkaAvgAggregateOutputType | null
+    _sum: NovinkaSumAggregateOutputType | null
+    _min: NovinkaMinAggregateOutputType | null
+    _max: NovinkaMaxAggregateOutputType | null
+  }
+
+  type GetNovinkaGroupByPayload<T extends NovinkaGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<NovinkaGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof NovinkaGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], NovinkaGroupByOutputType[P]>
+            : GetScalarType<T[P], NovinkaGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type NovinkaSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    nazev?: boolean
+    obsah?: boolean
+    publikovano?: boolean
+    vytvoreno?: boolean
+    aktualizovano?: boolean
+  }, ExtArgs["result"]["novinka"]>
+
+  export type NovinkaSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    nazev?: boolean
+    obsah?: boolean
+    publikovano?: boolean
+    vytvoreno?: boolean
+    aktualizovano?: boolean
+  }, ExtArgs["result"]["novinka"]>
+
+  export type NovinkaSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    nazev?: boolean
+    obsah?: boolean
+    publikovano?: boolean
+    vytvoreno?: boolean
+    aktualizovano?: boolean
+  }, ExtArgs["result"]["novinka"]>
+
+  export type NovinkaSelectScalar = {
+    id?: boolean
+    nazev?: boolean
+    obsah?: boolean
+    publikovano?: boolean
+    vytvoreno?: boolean
+    aktualizovano?: boolean
+  }
+
+  export type NovinkaOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "nazev" | "obsah" | "publikovano" | "vytvoreno" | "aktualizovano", ExtArgs["result"]["novinka"]>
+
+  export type $NovinkaPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "Novinka"
+    objects: {}
+    scalars: $Extensions.GetPayloadResult<{
+      id: number
+      nazev: string
+      obsah: string
+      publikovano: boolean
+      vytvoreno: Date
+      aktualizovano: Date
+    }, ExtArgs["result"]["novinka"]>
+    composites: {}
+  }
+
+  type NovinkaGetPayload<S extends boolean | null | undefined | NovinkaDefaultArgs> = $Result.GetResult<Prisma.$NovinkaPayload, S>
+
+  type NovinkaCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<NovinkaFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: NovinkaCountAggregateInputType | true
+    }
+
+  export interface NovinkaDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Novinka'], meta: { name: 'Novinka' } }
+    /**
+     * Find zero or one Novinka that matches the filter.
+     * @param {NovinkaFindUniqueArgs} args - Arguments to find a Novinka
+     * @example
+     * // Get one Novinka
+     * const novinka = await prisma.novinka.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends NovinkaFindUniqueArgs>(args: SelectSubset<T, NovinkaFindUniqueArgs<ExtArgs>>): Prisma__NovinkaClient<$Result.GetResult<Prisma.$NovinkaPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one Novinka that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {NovinkaFindUniqueOrThrowArgs} args - Arguments to find a Novinka
+     * @example
+     * // Get one Novinka
+     * const novinka = await prisma.novinka.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends NovinkaFindUniqueOrThrowArgs>(args: SelectSubset<T, NovinkaFindUniqueOrThrowArgs<ExtArgs>>): Prisma__NovinkaClient<$Result.GetResult<Prisma.$NovinkaPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Novinka that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {NovinkaFindFirstArgs} args - Arguments to find a Novinka
+     * @example
+     * // Get one Novinka
+     * const novinka = await prisma.novinka.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends NovinkaFindFirstArgs>(args?: SelectSubset<T, NovinkaFindFirstArgs<ExtArgs>>): Prisma__NovinkaClient<$Result.GetResult<Prisma.$NovinkaPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Novinka that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {NovinkaFindFirstOrThrowArgs} args - Arguments to find a Novinka
+     * @example
+     * // Get one Novinka
+     * const novinka = await prisma.novinka.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends NovinkaFindFirstOrThrowArgs>(args?: SelectSubset<T, NovinkaFindFirstOrThrowArgs<ExtArgs>>): Prisma__NovinkaClient<$Result.GetResult<Prisma.$NovinkaPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more Novinkas that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {NovinkaFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Novinkas
+     * const novinkas = await prisma.novinka.findMany()
+     * 
+     * // Get first 10 Novinkas
+     * const novinkas = await prisma.novinka.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const novinkaWithIdOnly = await prisma.novinka.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends NovinkaFindManyArgs>(args?: SelectSubset<T, NovinkaFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$NovinkaPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a Novinka.
+     * @param {NovinkaCreateArgs} args - Arguments to create a Novinka.
+     * @example
+     * // Create one Novinka
+     * const Novinka = await prisma.novinka.create({
+     *   data: {
+     *     // ... data to create a Novinka
+     *   }
+     * })
+     * 
+     */
+    create<T extends NovinkaCreateArgs>(args: SelectSubset<T, NovinkaCreateArgs<ExtArgs>>): Prisma__NovinkaClient<$Result.GetResult<Prisma.$NovinkaPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many Novinkas.
+     * @param {NovinkaCreateManyArgs} args - Arguments to create many Novinkas.
+     * @example
+     * // Create many Novinkas
+     * const novinka = await prisma.novinka.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends NovinkaCreateManyArgs>(args?: SelectSubset<T, NovinkaCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many Novinkas and returns the data saved in the database.
+     * @param {NovinkaCreateManyAndReturnArgs} args - Arguments to create many Novinkas.
+     * @example
+     * // Create many Novinkas
+     * const novinka = await prisma.novinka.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many Novinkas and only return the `id`
+     * const novinkaWithIdOnly = await prisma.novinka.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends NovinkaCreateManyAndReturnArgs>(args?: SelectSubset<T, NovinkaCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$NovinkaPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a Novinka.
+     * @param {NovinkaDeleteArgs} args - Arguments to delete one Novinka.
+     * @example
+     * // Delete one Novinka
+     * const Novinka = await prisma.novinka.delete({
+     *   where: {
+     *     // ... filter to delete one Novinka
+     *   }
+     * })
+     * 
+     */
+    delete<T extends NovinkaDeleteArgs>(args: SelectSubset<T, NovinkaDeleteArgs<ExtArgs>>): Prisma__NovinkaClient<$Result.GetResult<Prisma.$NovinkaPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one Novinka.
+     * @param {NovinkaUpdateArgs} args - Arguments to update one Novinka.
+     * @example
+     * // Update one Novinka
+     * const novinka = await prisma.novinka.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends NovinkaUpdateArgs>(args: SelectSubset<T, NovinkaUpdateArgs<ExtArgs>>): Prisma__NovinkaClient<$Result.GetResult<Prisma.$NovinkaPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more Novinkas.
+     * @param {NovinkaDeleteManyArgs} args - Arguments to filter Novinkas to delete.
+     * @example
+     * // Delete a few Novinkas
+     * const { count } = await prisma.novinka.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends NovinkaDeleteManyArgs>(args?: SelectSubset<T, NovinkaDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Novinkas.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {NovinkaUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Novinkas
+     * const novinka = await prisma.novinka.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends NovinkaUpdateManyArgs>(args: SelectSubset<T, NovinkaUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Novinkas and returns the data updated in the database.
+     * @param {NovinkaUpdateManyAndReturnArgs} args - Arguments to update many Novinkas.
+     * @example
+     * // Update many Novinkas
+     * const novinka = await prisma.novinka.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more Novinkas and only return the `id`
+     * const novinkaWithIdOnly = await prisma.novinka.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends NovinkaUpdateManyAndReturnArgs>(args: SelectSubset<T, NovinkaUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$NovinkaPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one Novinka.
+     * @param {NovinkaUpsertArgs} args - Arguments to update or create a Novinka.
+     * @example
+     * // Update or create a Novinka
+     * const novinka = await prisma.novinka.upsert({
+     *   create: {
+     *     // ... data to create a Novinka
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Novinka we want to update
+     *   }
+     * })
+     */
+    upsert<T extends NovinkaUpsertArgs>(args: SelectSubset<T, NovinkaUpsertArgs<ExtArgs>>): Prisma__NovinkaClient<$Result.GetResult<Prisma.$NovinkaPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of Novinkas.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {NovinkaCountArgs} args - Arguments to filter Novinkas to count.
+     * @example
+     * // Count the number of Novinkas
+     * const count = await prisma.novinka.count({
+     *   where: {
+     *     // ... the filter for the Novinkas we want to count
+     *   }
+     * })
+    **/
+    count<T extends NovinkaCountArgs>(
+      args?: Subset<T, NovinkaCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], NovinkaCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Novinka.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {NovinkaAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends NovinkaAggregateArgs>(args: Subset<T, NovinkaAggregateArgs>): Prisma.PrismaPromise<GetNovinkaAggregateType<T>>
+
+    /**
+     * Group by Novinka.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {NovinkaGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends NovinkaGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: NovinkaGroupByArgs['orderBy'] }
+        : { orderBy?: NovinkaGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, NovinkaGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetNovinkaGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the Novinka model
+   */
+  readonly fields: NovinkaFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for Novinka.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__NovinkaClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the Novinka model
+   */
+  interface NovinkaFieldRefs {
+    readonly id: FieldRef<"Novinka", 'Int'>
+    readonly nazev: FieldRef<"Novinka", 'String'>
+    readonly obsah: FieldRef<"Novinka", 'String'>
+    readonly publikovano: FieldRef<"Novinka", 'Boolean'>
+    readonly vytvoreno: FieldRef<"Novinka", 'DateTime'>
+    readonly aktualizovano: FieldRef<"Novinka", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * Novinka findUnique
+   */
+  export type NovinkaFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Novinka
+     */
+    select?: NovinkaSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Novinka
+     */
+    omit?: NovinkaOmit<ExtArgs> | null
+    /**
+     * Filter, which Novinka to fetch.
+     */
+    where: NovinkaWhereUniqueInput
+  }
+
+  /**
+   * Novinka findUniqueOrThrow
+   */
+  export type NovinkaFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Novinka
+     */
+    select?: NovinkaSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Novinka
+     */
+    omit?: NovinkaOmit<ExtArgs> | null
+    /**
+     * Filter, which Novinka to fetch.
+     */
+    where: NovinkaWhereUniqueInput
+  }
+
+  /**
+   * Novinka findFirst
+   */
+  export type NovinkaFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Novinka
+     */
+    select?: NovinkaSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Novinka
+     */
+    omit?: NovinkaOmit<ExtArgs> | null
+    /**
+     * Filter, which Novinka to fetch.
+     */
+    where?: NovinkaWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Novinkas to fetch.
+     */
+    orderBy?: NovinkaOrderByWithRelationInput | NovinkaOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Novinkas.
+     */
+    cursor?: NovinkaWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Novinkas from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Novinkas.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Novinkas.
+     */
+    distinct?: NovinkaScalarFieldEnum | NovinkaScalarFieldEnum[]
+  }
+
+  /**
+   * Novinka findFirstOrThrow
+   */
+  export type NovinkaFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Novinka
+     */
+    select?: NovinkaSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Novinka
+     */
+    omit?: NovinkaOmit<ExtArgs> | null
+    /**
+     * Filter, which Novinka to fetch.
+     */
+    where?: NovinkaWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Novinkas to fetch.
+     */
+    orderBy?: NovinkaOrderByWithRelationInput | NovinkaOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Novinkas.
+     */
+    cursor?: NovinkaWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Novinkas from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Novinkas.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Novinkas.
+     */
+    distinct?: NovinkaScalarFieldEnum | NovinkaScalarFieldEnum[]
+  }
+
+  /**
+   * Novinka findMany
+   */
+  export type NovinkaFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Novinka
+     */
+    select?: NovinkaSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Novinka
+     */
+    omit?: NovinkaOmit<ExtArgs> | null
+    /**
+     * Filter, which Novinkas to fetch.
+     */
+    where?: NovinkaWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Novinkas to fetch.
+     */
+    orderBy?: NovinkaOrderByWithRelationInput | NovinkaOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing Novinkas.
+     */
+    cursor?: NovinkaWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Novinkas from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Novinkas.
+     */
+    skip?: number
+    distinct?: NovinkaScalarFieldEnum | NovinkaScalarFieldEnum[]
+  }
+
+  /**
+   * Novinka create
+   */
+  export type NovinkaCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Novinka
+     */
+    select?: NovinkaSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Novinka
+     */
+    omit?: NovinkaOmit<ExtArgs> | null
+    /**
+     * The data needed to create a Novinka.
+     */
+    data: XOR<NovinkaCreateInput, NovinkaUncheckedCreateInput>
+  }
+
+  /**
+   * Novinka createMany
+   */
+  export type NovinkaCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many Novinkas.
+     */
+    data: NovinkaCreateManyInput | NovinkaCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * Novinka createManyAndReturn
+   */
+  export type NovinkaCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Novinka
+     */
+    select?: NovinkaSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Novinka
+     */
+    omit?: NovinkaOmit<ExtArgs> | null
+    /**
+     * The data used to create many Novinkas.
+     */
+    data: NovinkaCreateManyInput | NovinkaCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * Novinka update
+   */
+  export type NovinkaUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Novinka
+     */
+    select?: NovinkaSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Novinka
+     */
+    omit?: NovinkaOmit<ExtArgs> | null
+    /**
+     * The data needed to update a Novinka.
+     */
+    data: XOR<NovinkaUpdateInput, NovinkaUncheckedUpdateInput>
+    /**
+     * Choose, which Novinka to update.
+     */
+    where: NovinkaWhereUniqueInput
+  }
+
+  /**
+   * Novinka updateMany
+   */
+  export type NovinkaUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update Novinkas.
+     */
+    data: XOR<NovinkaUpdateManyMutationInput, NovinkaUncheckedUpdateManyInput>
+    /**
+     * Filter which Novinkas to update
+     */
+    where?: NovinkaWhereInput
+    /**
+     * Limit how many Novinkas to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * Novinka updateManyAndReturn
+   */
+  export type NovinkaUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Novinka
+     */
+    select?: NovinkaSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Novinka
+     */
+    omit?: NovinkaOmit<ExtArgs> | null
+    /**
+     * The data used to update Novinkas.
+     */
+    data: XOR<NovinkaUpdateManyMutationInput, NovinkaUncheckedUpdateManyInput>
+    /**
+     * Filter which Novinkas to update
+     */
+    where?: NovinkaWhereInput
+    /**
+     * Limit how many Novinkas to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * Novinka upsert
+   */
+  export type NovinkaUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Novinka
+     */
+    select?: NovinkaSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Novinka
+     */
+    omit?: NovinkaOmit<ExtArgs> | null
+    /**
+     * The filter to search for the Novinka to update in case it exists.
+     */
+    where: NovinkaWhereUniqueInput
+    /**
+     * In case the Novinka found by the `where` argument doesn't exist, create a new Novinka with this data.
+     */
+    create: XOR<NovinkaCreateInput, NovinkaUncheckedCreateInput>
+    /**
+     * In case the Novinka was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<NovinkaUpdateInput, NovinkaUncheckedUpdateInput>
+  }
+
+  /**
+   * Novinka delete
+   */
+  export type NovinkaDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Novinka
+     */
+    select?: NovinkaSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Novinka
+     */
+    omit?: NovinkaOmit<ExtArgs> | null
+    /**
+     * Filter which Novinka to delete.
+     */
+    where: NovinkaWhereUniqueInput
+  }
+
+  /**
+   * Novinka deleteMany
+   */
+  export type NovinkaDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Novinkas to delete
+     */
+    where?: NovinkaWhereInput
+    /**
+     * Limit how many Novinkas to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * Novinka without action
+   */
+  export type NovinkaDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Novinka
+     */
+    select?: NovinkaSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Novinka
+     */
+    omit?: NovinkaOmit<ExtArgs> | null
+  }
+
+
+  /**
+   * Model Faq
+   */
+
+  export type AggregateFaq = {
+    _count: FaqCountAggregateOutputType | null
+    _avg: FaqAvgAggregateOutputType | null
+    _sum: FaqSumAggregateOutputType | null
+    _min: FaqMinAggregateOutputType | null
+    _max: FaqMaxAggregateOutputType | null
+  }
+
+  export type FaqAvgAggregateOutputType = {
+    id: number | null
+    poradi: number | null
+  }
+
+  export type FaqSumAggregateOutputType = {
+    id: number | null
+    poradi: number | null
+  }
+
+  export type FaqMinAggregateOutputType = {
+    id: number | null
+    otazka: string | null
+    odpoved: string | null
+    publikovano: boolean | null
+    poradi: number | null
+    vytvoreno: Date | null
+    aktualizovano: Date | null
+  }
+
+  export type FaqMaxAggregateOutputType = {
+    id: number | null
+    otazka: string | null
+    odpoved: string | null
+    publikovano: boolean | null
+    poradi: number | null
+    vytvoreno: Date | null
+    aktualizovano: Date | null
+  }
+
+  export type FaqCountAggregateOutputType = {
+    id: number
+    otazka: number
+    odpoved: number
+    publikovano: number
+    poradi: number
+    vytvoreno: number
+    aktualizovano: number
+    _all: number
+  }
+
+
+  export type FaqAvgAggregateInputType = {
+    id?: true
+    poradi?: true
+  }
+
+  export type FaqSumAggregateInputType = {
+    id?: true
+    poradi?: true
+  }
+
+  export type FaqMinAggregateInputType = {
+    id?: true
+    otazka?: true
+    odpoved?: true
+    publikovano?: true
+    poradi?: true
+    vytvoreno?: true
+    aktualizovano?: true
+  }
+
+  export type FaqMaxAggregateInputType = {
+    id?: true
+    otazka?: true
+    odpoved?: true
+    publikovano?: true
+    poradi?: true
+    vytvoreno?: true
+    aktualizovano?: true
+  }
+
+  export type FaqCountAggregateInputType = {
+    id?: true
+    otazka?: true
+    odpoved?: true
+    publikovano?: true
+    poradi?: true
+    vytvoreno?: true
+    aktualizovano?: true
+    _all?: true
+  }
+
+  export type FaqAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Faq to aggregate.
+     */
+    where?: FaqWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Faqs to fetch.
+     */
+    orderBy?: FaqOrderByWithRelationInput | FaqOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: FaqWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Faqs from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Faqs.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned Faqs
+    **/
+    _count?: true | FaqCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: FaqAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: FaqSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: FaqMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: FaqMaxAggregateInputType
+  }
+
+  export type GetFaqAggregateType<T extends FaqAggregateArgs> = {
+        [P in keyof T & keyof AggregateFaq]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateFaq[P]>
+      : GetScalarType<T[P], AggregateFaq[P]>
+  }
+
+
+
+
+  export type FaqGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: FaqWhereInput
+    orderBy?: FaqOrderByWithAggregationInput | FaqOrderByWithAggregationInput[]
+    by: FaqScalarFieldEnum[] | FaqScalarFieldEnum
+    having?: FaqScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: FaqCountAggregateInputType | true
+    _avg?: FaqAvgAggregateInputType
+    _sum?: FaqSumAggregateInputType
+    _min?: FaqMinAggregateInputType
+    _max?: FaqMaxAggregateInputType
+  }
+
+  export type FaqGroupByOutputType = {
+    id: number
+    otazka: string
+    odpoved: string
+    publikovano: boolean
+    poradi: number
+    vytvoreno: Date
+    aktualizovano: Date
+    _count: FaqCountAggregateOutputType | null
+    _avg: FaqAvgAggregateOutputType | null
+    _sum: FaqSumAggregateOutputType | null
+    _min: FaqMinAggregateOutputType | null
+    _max: FaqMaxAggregateOutputType | null
+  }
+
+  type GetFaqGroupByPayload<T extends FaqGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<FaqGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof FaqGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], FaqGroupByOutputType[P]>
+            : GetScalarType<T[P], FaqGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type FaqSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    otazka?: boolean
+    odpoved?: boolean
+    publikovano?: boolean
+    poradi?: boolean
+    vytvoreno?: boolean
+    aktualizovano?: boolean
+  }, ExtArgs["result"]["faq"]>
+
+  export type FaqSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    otazka?: boolean
+    odpoved?: boolean
+    publikovano?: boolean
+    poradi?: boolean
+    vytvoreno?: boolean
+    aktualizovano?: boolean
+  }, ExtArgs["result"]["faq"]>
+
+  export type FaqSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    otazka?: boolean
+    odpoved?: boolean
+    publikovano?: boolean
+    poradi?: boolean
+    vytvoreno?: boolean
+    aktualizovano?: boolean
+  }, ExtArgs["result"]["faq"]>
+
+  export type FaqSelectScalar = {
+    id?: boolean
+    otazka?: boolean
+    odpoved?: boolean
+    publikovano?: boolean
+    poradi?: boolean
+    vytvoreno?: boolean
+    aktualizovano?: boolean
+  }
+
+  export type FaqOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "otazka" | "odpoved" | "publikovano" | "poradi" | "vytvoreno" | "aktualizovano", ExtArgs["result"]["faq"]>
+
+  export type $FaqPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "Faq"
+    objects: {}
+    scalars: $Extensions.GetPayloadResult<{
+      id: number
+      otazka: string
+      odpoved: string
+      publikovano: boolean
+      poradi: number
+      vytvoreno: Date
+      aktualizovano: Date
+    }, ExtArgs["result"]["faq"]>
+    composites: {}
+  }
+
+  type FaqGetPayload<S extends boolean | null | undefined | FaqDefaultArgs> = $Result.GetResult<Prisma.$FaqPayload, S>
+
+  type FaqCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<FaqFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: FaqCountAggregateInputType | true
+    }
+
+  export interface FaqDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Faq'], meta: { name: 'Faq' } }
+    /**
+     * Find zero or one Faq that matches the filter.
+     * @param {FaqFindUniqueArgs} args - Arguments to find a Faq
+     * @example
+     * // Get one Faq
+     * const faq = await prisma.faq.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends FaqFindUniqueArgs>(args: SelectSubset<T, FaqFindUniqueArgs<ExtArgs>>): Prisma__FaqClient<$Result.GetResult<Prisma.$FaqPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one Faq that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {FaqFindUniqueOrThrowArgs} args - Arguments to find a Faq
+     * @example
+     * // Get one Faq
+     * const faq = await prisma.faq.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends FaqFindUniqueOrThrowArgs>(args: SelectSubset<T, FaqFindUniqueOrThrowArgs<ExtArgs>>): Prisma__FaqClient<$Result.GetResult<Prisma.$FaqPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Faq that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {FaqFindFirstArgs} args - Arguments to find a Faq
+     * @example
+     * // Get one Faq
+     * const faq = await prisma.faq.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends FaqFindFirstArgs>(args?: SelectSubset<T, FaqFindFirstArgs<ExtArgs>>): Prisma__FaqClient<$Result.GetResult<Prisma.$FaqPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Faq that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {FaqFindFirstOrThrowArgs} args - Arguments to find a Faq
+     * @example
+     * // Get one Faq
+     * const faq = await prisma.faq.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends FaqFindFirstOrThrowArgs>(args?: SelectSubset<T, FaqFindFirstOrThrowArgs<ExtArgs>>): Prisma__FaqClient<$Result.GetResult<Prisma.$FaqPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more Faqs that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {FaqFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Faqs
+     * const faqs = await prisma.faq.findMany()
+     * 
+     * // Get first 10 Faqs
+     * const faqs = await prisma.faq.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const faqWithIdOnly = await prisma.faq.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends FaqFindManyArgs>(args?: SelectSubset<T, FaqFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$FaqPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a Faq.
+     * @param {FaqCreateArgs} args - Arguments to create a Faq.
+     * @example
+     * // Create one Faq
+     * const Faq = await prisma.faq.create({
+     *   data: {
+     *     // ... data to create a Faq
+     *   }
+     * })
+     * 
+     */
+    create<T extends FaqCreateArgs>(args: SelectSubset<T, FaqCreateArgs<ExtArgs>>): Prisma__FaqClient<$Result.GetResult<Prisma.$FaqPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many Faqs.
+     * @param {FaqCreateManyArgs} args - Arguments to create many Faqs.
+     * @example
+     * // Create many Faqs
+     * const faq = await prisma.faq.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends FaqCreateManyArgs>(args?: SelectSubset<T, FaqCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many Faqs and returns the data saved in the database.
+     * @param {FaqCreateManyAndReturnArgs} args - Arguments to create many Faqs.
+     * @example
+     * // Create many Faqs
+     * const faq = await prisma.faq.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many Faqs and only return the `id`
+     * const faqWithIdOnly = await prisma.faq.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends FaqCreateManyAndReturnArgs>(args?: SelectSubset<T, FaqCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$FaqPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a Faq.
+     * @param {FaqDeleteArgs} args - Arguments to delete one Faq.
+     * @example
+     * // Delete one Faq
+     * const Faq = await prisma.faq.delete({
+     *   where: {
+     *     // ... filter to delete one Faq
+     *   }
+     * })
+     * 
+     */
+    delete<T extends FaqDeleteArgs>(args: SelectSubset<T, FaqDeleteArgs<ExtArgs>>): Prisma__FaqClient<$Result.GetResult<Prisma.$FaqPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one Faq.
+     * @param {FaqUpdateArgs} args - Arguments to update one Faq.
+     * @example
+     * // Update one Faq
+     * const faq = await prisma.faq.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends FaqUpdateArgs>(args: SelectSubset<T, FaqUpdateArgs<ExtArgs>>): Prisma__FaqClient<$Result.GetResult<Prisma.$FaqPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more Faqs.
+     * @param {FaqDeleteManyArgs} args - Arguments to filter Faqs to delete.
+     * @example
+     * // Delete a few Faqs
+     * const { count } = await prisma.faq.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends FaqDeleteManyArgs>(args?: SelectSubset<T, FaqDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Faqs.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {FaqUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Faqs
+     * const faq = await prisma.faq.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends FaqUpdateManyArgs>(args: SelectSubset<T, FaqUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Faqs and returns the data updated in the database.
+     * @param {FaqUpdateManyAndReturnArgs} args - Arguments to update many Faqs.
+     * @example
+     * // Update many Faqs
+     * const faq = await prisma.faq.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more Faqs and only return the `id`
+     * const faqWithIdOnly = await prisma.faq.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends FaqUpdateManyAndReturnArgs>(args: SelectSubset<T, FaqUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$FaqPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one Faq.
+     * @param {FaqUpsertArgs} args - Arguments to update or create a Faq.
+     * @example
+     * // Update or create a Faq
+     * const faq = await prisma.faq.upsert({
+     *   create: {
+     *     // ... data to create a Faq
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Faq we want to update
+     *   }
+     * })
+     */
+    upsert<T extends FaqUpsertArgs>(args: SelectSubset<T, FaqUpsertArgs<ExtArgs>>): Prisma__FaqClient<$Result.GetResult<Prisma.$FaqPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of Faqs.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {FaqCountArgs} args - Arguments to filter Faqs to count.
+     * @example
+     * // Count the number of Faqs
+     * const count = await prisma.faq.count({
+     *   where: {
+     *     // ... the filter for the Faqs we want to count
+     *   }
+     * })
+    **/
+    count<T extends FaqCountArgs>(
+      args?: Subset<T, FaqCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], FaqCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Faq.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {FaqAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends FaqAggregateArgs>(args: Subset<T, FaqAggregateArgs>): Prisma.PrismaPromise<GetFaqAggregateType<T>>
+
+    /**
+     * Group by Faq.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {FaqGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends FaqGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: FaqGroupByArgs['orderBy'] }
+        : { orderBy?: FaqGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, FaqGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetFaqGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the Faq model
+   */
+  readonly fields: FaqFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for Faq.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__FaqClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the Faq model
+   */
+  interface FaqFieldRefs {
+    readonly id: FieldRef<"Faq", 'Int'>
+    readonly otazka: FieldRef<"Faq", 'String'>
+    readonly odpoved: FieldRef<"Faq", 'String'>
+    readonly publikovano: FieldRef<"Faq", 'Boolean'>
+    readonly poradi: FieldRef<"Faq", 'Int'>
+    readonly vytvoreno: FieldRef<"Faq", 'DateTime'>
+    readonly aktualizovano: FieldRef<"Faq", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * Faq findUnique
+   */
+  export type FaqFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Faq
+     */
+    select?: FaqSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Faq
+     */
+    omit?: FaqOmit<ExtArgs> | null
+    /**
+     * Filter, which Faq to fetch.
+     */
+    where: FaqWhereUniqueInput
+  }
+
+  /**
+   * Faq findUniqueOrThrow
+   */
+  export type FaqFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Faq
+     */
+    select?: FaqSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Faq
+     */
+    omit?: FaqOmit<ExtArgs> | null
+    /**
+     * Filter, which Faq to fetch.
+     */
+    where: FaqWhereUniqueInput
+  }
+
+  /**
+   * Faq findFirst
+   */
+  export type FaqFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Faq
+     */
+    select?: FaqSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Faq
+     */
+    omit?: FaqOmit<ExtArgs> | null
+    /**
+     * Filter, which Faq to fetch.
+     */
+    where?: FaqWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Faqs to fetch.
+     */
+    orderBy?: FaqOrderByWithRelationInput | FaqOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Faqs.
+     */
+    cursor?: FaqWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Faqs from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Faqs.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Faqs.
+     */
+    distinct?: FaqScalarFieldEnum | FaqScalarFieldEnum[]
+  }
+
+  /**
+   * Faq findFirstOrThrow
+   */
+  export type FaqFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Faq
+     */
+    select?: FaqSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Faq
+     */
+    omit?: FaqOmit<ExtArgs> | null
+    /**
+     * Filter, which Faq to fetch.
+     */
+    where?: FaqWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Faqs to fetch.
+     */
+    orderBy?: FaqOrderByWithRelationInput | FaqOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Faqs.
+     */
+    cursor?: FaqWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Faqs from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Faqs.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Faqs.
+     */
+    distinct?: FaqScalarFieldEnum | FaqScalarFieldEnum[]
+  }
+
+  /**
+   * Faq findMany
+   */
+  export type FaqFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Faq
+     */
+    select?: FaqSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Faq
+     */
+    omit?: FaqOmit<ExtArgs> | null
+    /**
+     * Filter, which Faqs to fetch.
+     */
+    where?: FaqWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Faqs to fetch.
+     */
+    orderBy?: FaqOrderByWithRelationInput | FaqOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing Faqs.
+     */
+    cursor?: FaqWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Faqs from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Faqs.
+     */
+    skip?: number
+    distinct?: FaqScalarFieldEnum | FaqScalarFieldEnum[]
+  }
+
+  /**
+   * Faq create
+   */
+  export type FaqCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Faq
+     */
+    select?: FaqSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Faq
+     */
+    omit?: FaqOmit<ExtArgs> | null
+    /**
+     * The data needed to create a Faq.
+     */
+    data: XOR<FaqCreateInput, FaqUncheckedCreateInput>
+  }
+
+  /**
+   * Faq createMany
+   */
+  export type FaqCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many Faqs.
+     */
+    data: FaqCreateManyInput | FaqCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * Faq createManyAndReturn
+   */
+  export type FaqCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Faq
+     */
+    select?: FaqSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Faq
+     */
+    omit?: FaqOmit<ExtArgs> | null
+    /**
+     * The data used to create many Faqs.
+     */
+    data: FaqCreateManyInput | FaqCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * Faq update
+   */
+  export type FaqUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Faq
+     */
+    select?: FaqSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Faq
+     */
+    omit?: FaqOmit<ExtArgs> | null
+    /**
+     * The data needed to update a Faq.
+     */
+    data: XOR<FaqUpdateInput, FaqUncheckedUpdateInput>
+    /**
+     * Choose, which Faq to update.
+     */
+    where: FaqWhereUniqueInput
+  }
+
+  /**
+   * Faq updateMany
+   */
+  export type FaqUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update Faqs.
+     */
+    data: XOR<FaqUpdateManyMutationInput, FaqUncheckedUpdateManyInput>
+    /**
+     * Filter which Faqs to update
+     */
+    where?: FaqWhereInput
+    /**
+     * Limit how many Faqs to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * Faq updateManyAndReturn
+   */
+  export type FaqUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Faq
+     */
+    select?: FaqSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Faq
+     */
+    omit?: FaqOmit<ExtArgs> | null
+    /**
+     * The data used to update Faqs.
+     */
+    data: XOR<FaqUpdateManyMutationInput, FaqUncheckedUpdateManyInput>
+    /**
+     * Filter which Faqs to update
+     */
+    where?: FaqWhereInput
+    /**
+     * Limit how many Faqs to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * Faq upsert
+   */
+  export type FaqUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Faq
+     */
+    select?: FaqSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Faq
+     */
+    omit?: FaqOmit<ExtArgs> | null
+    /**
+     * The filter to search for the Faq to update in case it exists.
+     */
+    where: FaqWhereUniqueInput
+    /**
+     * In case the Faq found by the `where` argument doesn't exist, create a new Faq with this data.
+     */
+    create: XOR<FaqCreateInput, FaqUncheckedCreateInput>
+    /**
+     * In case the Faq was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<FaqUpdateInput, FaqUncheckedUpdateInput>
+  }
+
+  /**
+   * Faq delete
+   */
+  export type FaqDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Faq
+     */
+    select?: FaqSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Faq
+     */
+    omit?: FaqOmit<ExtArgs> | null
+    /**
+     * Filter which Faq to delete.
+     */
+    where: FaqWhereUniqueInput
+  }
+
+  /**
+   * Faq deleteMany
+   */
+  export type FaqDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Faqs to delete
+     */
+    where?: FaqWhereInput
+    /**
+     * Limit how many Faqs to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * Faq without action
+   */
+  export type FaqDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Faq
+     */
+    select?: FaqSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Faq
+     */
+    omit?: FaqOmit<ExtArgs> | null
+  }
+
+
+  /**
    * Enums
    */
 
@@ -6694,18 +7844,6 @@ export namespace Prisma {
   };
 
   export type TransactionIsolationLevel = (typeof TransactionIsolationLevel)[keyof typeof TransactionIsolationLevel]
-
-
-  export const NovinkaScalarFieldEnum: {
-    id: 'id',
-    nazev: 'nazev',
-    obsah: 'obsah',
-    publikovano: 'publikovano',
-    vytvoreno: 'vytvoreno',
-    aktualizovano: 'aktualizovano'
-  };
-
-  export type NovinkaScalarFieldEnum = (typeof NovinkaScalarFieldEnum)[keyof typeof NovinkaScalarFieldEnum]
 
 
   export const UserScalarFieldEnum: {
@@ -6766,6 +7904,31 @@ export namespace Prisma {
   export type VerificationScalarFieldEnum = (typeof VerificationScalarFieldEnum)[keyof typeof VerificationScalarFieldEnum]
 
 
+  export const NovinkaScalarFieldEnum: {
+    id: 'id',
+    nazev: 'nazev',
+    obsah: 'obsah',
+    publikovano: 'publikovano',
+    vytvoreno: 'vytvoreno',
+    aktualizovano: 'aktualizovano'
+  };
+
+  export type NovinkaScalarFieldEnum = (typeof NovinkaScalarFieldEnum)[keyof typeof NovinkaScalarFieldEnum]
+
+
+  export const FaqScalarFieldEnum: {
+    id: 'id',
+    otazka: 'otazka',
+    odpoved: 'odpoved',
+    publikovano: 'publikovano',
+    poradi: 'poradi',
+    vytvoreno: 'vytvoreno',
+    aktualizovano: 'aktualizovano'
+  };
+
+  export type FaqScalarFieldEnum = (typeof FaqScalarFieldEnum)[keyof typeof FaqScalarFieldEnum]
+
+
   export const SortOrder: {
     asc: 'asc',
     desc: 'desc'
@@ -6793,20 +7956,6 @@ export namespace Prisma {
   /**
    * Field references
    */
-
-
-  /**
-   * Reference to a field of type 'Int'
-   */
-  export type IntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Int'>
-    
-
-
-  /**
-   * Reference to a field of type 'Int[]'
-   */
-  export type ListIntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Int[]'>
-    
 
 
   /**
@@ -6845,6 +7994,20 @@ export namespace Prisma {
 
 
   /**
+   * Reference to a field of type 'Int'
+   */
+  export type IntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Int'>
+    
+
+
+  /**
+   * Reference to a field of type 'Int[]'
+   */
+  export type ListIntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Int[]'>
+    
+
+
+  /**
    * Reference to a field of type 'Float'
    */
   export type FloatFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Float'>
@@ -6860,65 +8023,6 @@ export namespace Prisma {
    * Deep Input Types
    */
 
-
-  export type NovinkaWhereInput = {
-    AND?: NovinkaWhereInput | NovinkaWhereInput[]
-    OR?: NovinkaWhereInput[]
-    NOT?: NovinkaWhereInput | NovinkaWhereInput[]
-    id?: IntFilter<"Novinka"> | number
-    nazev?: StringFilter<"Novinka"> | string
-    obsah?: StringFilter<"Novinka"> | string
-    publikovano?: BoolFilter<"Novinka"> | boolean
-    vytvoreno?: DateTimeFilter<"Novinka"> | Date | string
-    aktualizovano?: DateTimeFilter<"Novinka"> | Date | string
-  }
-
-  export type NovinkaOrderByWithRelationInput = {
-    id?: SortOrder
-    nazev?: SortOrder
-    obsah?: SortOrder
-    publikovano?: SortOrder
-    vytvoreno?: SortOrder
-    aktualizovano?: SortOrder
-  }
-
-  export type NovinkaWhereUniqueInput = Prisma.AtLeast<{
-    id?: number
-    AND?: NovinkaWhereInput | NovinkaWhereInput[]
-    OR?: NovinkaWhereInput[]
-    NOT?: NovinkaWhereInput | NovinkaWhereInput[]
-    nazev?: StringFilter<"Novinka"> | string
-    obsah?: StringFilter<"Novinka"> | string
-    publikovano?: BoolFilter<"Novinka"> | boolean
-    vytvoreno?: DateTimeFilter<"Novinka"> | Date | string
-    aktualizovano?: DateTimeFilter<"Novinka"> | Date | string
-  }, "id">
-
-  export type NovinkaOrderByWithAggregationInput = {
-    id?: SortOrder
-    nazev?: SortOrder
-    obsah?: SortOrder
-    publikovano?: SortOrder
-    vytvoreno?: SortOrder
-    aktualizovano?: SortOrder
-    _count?: NovinkaCountOrderByAggregateInput
-    _avg?: NovinkaAvgOrderByAggregateInput
-    _max?: NovinkaMaxOrderByAggregateInput
-    _min?: NovinkaMinOrderByAggregateInput
-    _sum?: NovinkaSumOrderByAggregateInput
-  }
-
-  export type NovinkaScalarWhereWithAggregatesInput = {
-    AND?: NovinkaScalarWhereWithAggregatesInput | NovinkaScalarWhereWithAggregatesInput[]
-    OR?: NovinkaScalarWhereWithAggregatesInput[]
-    NOT?: NovinkaScalarWhereWithAggregatesInput | NovinkaScalarWhereWithAggregatesInput[]
-    id?: IntWithAggregatesFilter<"Novinka"> | number
-    nazev?: StringWithAggregatesFilter<"Novinka"> | string
-    obsah?: StringWithAggregatesFilter<"Novinka"> | string
-    publikovano?: BoolWithAggregatesFilter<"Novinka"> | boolean
-    vytvoreno?: DateTimeWithAggregatesFilter<"Novinka"> | Date | string
-    aktualizovano?: DateTimeWithAggregatesFilter<"Novinka"> | Date | string
-  }
 
   export type UserWhereInput = {
     AND?: UserWhereInput | UserWhereInput[]
@@ -7210,64 +8314,127 @@ export namespace Prisma {
     updatedAt?: DateTimeWithAggregatesFilter<"Verification"> | Date | string
   }
 
-  export type NovinkaCreateInput = {
-    nazev: string
-    obsah: string
-    publikovano?: boolean
-    vytvoreno?: Date | string
-    aktualizovano?: Date | string
+  export type NovinkaWhereInput = {
+    AND?: NovinkaWhereInput | NovinkaWhereInput[]
+    OR?: NovinkaWhereInput[]
+    NOT?: NovinkaWhereInput | NovinkaWhereInput[]
+    id?: IntFilter<"Novinka"> | number
+    nazev?: StringFilter<"Novinka"> | string
+    obsah?: StringFilter<"Novinka"> | string
+    publikovano?: BoolFilter<"Novinka"> | boolean
+    vytvoreno?: DateTimeFilter<"Novinka"> | Date | string
+    aktualizovano?: DateTimeFilter<"Novinka"> | Date | string
   }
 
-  export type NovinkaUncheckedCreateInput = {
+  export type NovinkaOrderByWithRelationInput = {
+    id?: SortOrder
+    nazev?: SortOrder
+    obsah?: SortOrder
+    publikovano?: SortOrder
+    vytvoreno?: SortOrder
+    aktualizovano?: SortOrder
+  }
+
+  export type NovinkaWhereUniqueInput = Prisma.AtLeast<{
     id?: number
-    nazev: string
-    obsah: string
-    publikovano?: boolean
-    vytvoreno?: Date | string
-    aktualizovano?: Date | string
+    AND?: NovinkaWhereInput | NovinkaWhereInput[]
+    OR?: NovinkaWhereInput[]
+    NOT?: NovinkaWhereInput | NovinkaWhereInput[]
+    nazev?: StringFilter<"Novinka"> | string
+    obsah?: StringFilter<"Novinka"> | string
+    publikovano?: BoolFilter<"Novinka"> | boolean
+    vytvoreno?: DateTimeFilter<"Novinka"> | Date | string
+    aktualizovano?: DateTimeFilter<"Novinka"> | Date | string
+  }, "id">
+
+  export type NovinkaOrderByWithAggregationInput = {
+    id?: SortOrder
+    nazev?: SortOrder
+    obsah?: SortOrder
+    publikovano?: SortOrder
+    vytvoreno?: SortOrder
+    aktualizovano?: SortOrder
+    _count?: NovinkaCountOrderByAggregateInput
+    _avg?: NovinkaAvgOrderByAggregateInput
+    _max?: NovinkaMaxOrderByAggregateInput
+    _min?: NovinkaMinOrderByAggregateInput
+    _sum?: NovinkaSumOrderByAggregateInput
   }
 
-  export type NovinkaUpdateInput = {
-    nazev?: StringFieldUpdateOperationsInput | string
-    obsah?: StringFieldUpdateOperationsInput | string
-    publikovano?: BoolFieldUpdateOperationsInput | boolean
-    vytvoreno?: DateTimeFieldUpdateOperationsInput | Date | string
-    aktualizovano?: DateTimeFieldUpdateOperationsInput | Date | string
+  export type NovinkaScalarWhereWithAggregatesInput = {
+    AND?: NovinkaScalarWhereWithAggregatesInput | NovinkaScalarWhereWithAggregatesInput[]
+    OR?: NovinkaScalarWhereWithAggregatesInput[]
+    NOT?: NovinkaScalarWhereWithAggregatesInput | NovinkaScalarWhereWithAggregatesInput[]
+    id?: IntWithAggregatesFilter<"Novinka"> | number
+    nazev?: StringWithAggregatesFilter<"Novinka"> | string
+    obsah?: StringWithAggregatesFilter<"Novinka"> | string
+    publikovano?: BoolWithAggregatesFilter<"Novinka"> | boolean
+    vytvoreno?: DateTimeWithAggregatesFilter<"Novinka"> | Date | string
+    aktualizovano?: DateTimeWithAggregatesFilter<"Novinka"> | Date | string
   }
 
-  export type NovinkaUncheckedUpdateInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    nazev?: StringFieldUpdateOperationsInput | string
-    obsah?: StringFieldUpdateOperationsInput | string
-    publikovano?: BoolFieldUpdateOperationsInput | boolean
-    vytvoreno?: DateTimeFieldUpdateOperationsInput | Date | string
-    aktualizovano?: DateTimeFieldUpdateOperationsInput | Date | string
+  export type FaqWhereInput = {
+    AND?: FaqWhereInput | FaqWhereInput[]
+    OR?: FaqWhereInput[]
+    NOT?: FaqWhereInput | FaqWhereInput[]
+    id?: IntFilter<"Faq"> | number
+    otazka?: StringFilter<"Faq"> | string
+    odpoved?: StringFilter<"Faq"> | string
+    publikovano?: BoolFilter<"Faq"> | boolean
+    poradi?: IntFilter<"Faq"> | number
+    vytvoreno?: DateTimeFilter<"Faq"> | Date | string
+    aktualizovano?: DateTimeFilter<"Faq"> | Date | string
   }
 
-  export type NovinkaCreateManyInput = {
+  export type FaqOrderByWithRelationInput = {
+    id?: SortOrder
+    otazka?: SortOrder
+    odpoved?: SortOrder
+    publikovano?: SortOrder
+    poradi?: SortOrder
+    vytvoreno?: SortOrder
+    aktualizovano?: SortOrder
+  }
+
+  export type FaqWhereUniqueInput = Prisma.AtLeast<{
     id?: number
-    nazev: string
-    obsah: string
-    publikovano?: boolean
-    vytvoreno?: Date | string
-    aktualizovano?: Date | string
+    AND?: FaqWhereInput | FaqWhereInput[]
+    OR?: FaqWhereInput[]
+    NOT?: FaqWhereInput | FaqWhereInput[]
+    otazka?: StringFilter<"Faq"> | string
+    odpoved?: StringFilter<"Faq"> | string
+    publikovano?: BoolFilter<"Faq"> | boolean
+    poradi?: IntFilter<"Faq"> | number
+    vytvoreno?: DateTimeFilter<"Faq"> | Date | string
+    aktualizovano?: DateTimeFilter<"Faq"> | Date | string
+  }, "id">
+
+  export type FaqOrderByWithAggregationInput = {
+    id?: SortOrder
+    otazka?: SortOrder
+    odpoved?: SortOrder
+    publikovano?: SortOrder
+    poradi?: SortOrder
+    vytvoreno?: SortOrder
+    aktualizovano?: SortOrder
+    _count?: FaqCountOrderByAggregateInput
+    _avg?: FaqAvgOrderByAggregateInput
+    _max?: FaqMaxOrderByAggregateInput
+    _min?: FaqMinOrderByAggregateInput
+    _sum?: FaqSumOrderByAggregateInput
   }
 
-  export type NovinkaUpdateManyMutationInput = {
-    nazev?: StringFieldUpdateOperationsInput | string
-    obsah?: StringFieldUpdateOperationsInput | string
-    publikovano?: BoolFieldUpdateOperationsInput | boolean
-    vytvoreno?: DateTimeFieldUpdateOperationsInput | Date | string
-    aktualizovano?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
-  export type NovinkaUncheckedUpdateManyInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    nazev?: StringFieldUpdateOperationsInput | string
-    obsah?: StringFieldUpdateOperationsInput | string
-    publikovano?: BoolFieldUpdateOperationsInput | boolean
-    vytvoreno?: DateTimeFieldUpdateOperationsInput | Date | string
-    aktualizovano?: DateTimeFieldUpdateOperationsInput | Date | string
+  export type FaqScalarWhereWithAggregatesInput = {
+    AND?: FaqScalarWhereWithAggregatesInput | FaqScalarWhereWithAggregatesInput[]
+    OR?: FaqScalarWhereWithAggregatesInput[]
+    NOT?: FaqScalarWhereWithAggregatesInput | FaqScalarWhereWithAggregatesInput[]
+    id?: IntWithAggregatesFilter<"Faq"> | number
+    otazka?: StringWithAggregatesFilter<"Faq"> | string
+    odpoved?: StringWithAggregatesFilter<"Faq"> | string
+    publikovano?: BoolWithAggregatesFilter<"Faq"> | boolean
+    poradi?: IntWithAggregatesFilter<"Faq"> | number
+    vytvoreno?: DateTimeWithAggregatesFilter<"Faq"> | Date | string
+    aktualizovano?: DateTimeWithAggregatesFilter<"Faq"> | Date | string
   }
 
   export type UserCreateInput = {
@@ -7598,15 +8765,131 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type IntFilter<$PrismaModel = never> = {
-    equals?: number | IntFieldRefInput<$PrismaModel>
-    in?: number[] | ListIntFieldRefInput<$PrismaModel>
-    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
-    lt?: number | IntFieldRefInput<$PrismaModel>
-    lte?: number | IntFieldRefInput<$PrismaModel>
-    gt?: number | IntFieldRefInput<$PrismaModel>
-    gte?: number | IntFieldRefInput<$PrismaModel>
-    not?: NestedIntFilter<$PrismaModel> | number
+  export type NovinkaCreateInput = {
+    nazev: string
+    obsah: string
+    publikovano?: boolean
+    vytvoreno?: Date | string
+    aktualizovano?: Date | string
+  }
+
+  export type NovinkaUncheckedCreateInput = {
+    id?: number
+    nazev: string
+    obsah: string
+    publikovano?: boolean
+    vytvoreno?: Date | string
+    aktualizovano?: Date | string
+  }
+
+  export type NovinkaUpdateInput = {
+    nazev?: StringFieldUpdateOperationsInput | string
+    obsah?: StringFieldUpdateOperationsInput | string
+    publikovano?: BoolFieldUpdateOperationsInput | boolean
+    vytvoreno?: DateTimeFieldUpdateOperationsInput | Date | string
+    aktualizovano?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type NovinkaUncheckedUpdateInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    nazev?: StringFieldUpdateOperationsInput | string
+    obsah?: StringFieldUpdateOperationsInput | string
+    publikovano?: BoolFieldUpdateOperationsInput | boolean
+    vytvoreno?: DateTimeFieldUpdateOperationsInput | Date | string
+    aktualizovano?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type NovinkaCreateManyInput = {
+    id?: number
+    nazev: string
+    obsah: string
+    publikovano?: boolean
+    vytvoreno?: Date | string
+    aktualizovano?: Date | string
+  }
+
+  export type NovinkaUpdateManyMutationInput = {
+    nazev?: StringFieldUpdateOperationsInput | string
+    obsah?: StringFieldUpdateOperationsInput | string
+    publikovano?: BoolFieldUpdateOperationsInput | boolean
+    vytvoreno?: DateTimeFieldUpdateOperationsInput | Date | string
+    aktualizovano?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type NovinkaUncheckedUpdateManyInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    nazev?: StringFieldUpdateOperationsInput | string
+    obsah?: StringFieldUpdateOperationsInput | string
+    publikovano?: BoolFieldUpdateOperationsInput | boolean
+    vytvoreno?: DateTimeFieldUpdateOperationsInput | Date | string
+    aktualizovano?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type FaqCreateInput = {
+    otazka: string
+    odpoved: string
+    publikovano?: boolean
+    poradi?: number
+    vytvoreno?: Date | string
+    aktualizovano?: Date | string
+  }
+
+  export type FaqUncheckedCreateInput = {
+    id?: number
+    otazka: string
+    odpoved: string
+    publikovano?: boolean
+    poradi?: number
+    vytvoreno?: Date | string
+    aktualizovano?: Date | string
+  }
+
+  export type FaqUpdateInput = {
+    otazka?: StringFieldUpdateOperationsInput | string
+    odpoved?: StringFieldUpdateOperationsInput | string
+    publikovano?: BoolFieldUpdateOperationsInput | boolean
+    poradi?: IntFieldUpdateOperationsInput | number
+    vytvoreno?: DateTimeFieldUpdateOperationsInput | Date | string
+    aktualizovano?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type FaqUncheckedUpdateInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    otazka?: StringFieldUpdateOperationsInput | string
+    odpoved?: StringFieldUpdateOperationsInput | string
+    publikovano?: BoolFieldUpdateOperationsInput | boolean
+    poradi?: IntFieldUpdateOperationsInput | number
+    vytvoreno?: DateTimeFieldUpdateOperationsInput | Date | string
+    aktualizovano?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type FaqCreateManyInput = {
+    id?: number
+    otazka: string
+    odpoved: string
+    publikovano?: boolean
+    poradi?: number
+    vytvoreno?: Date | string
+    aktualizovano?: Date | string
+  }
+
+  export type FaqUpdateManyMutationInput = {
+    otazka?: StringFieldUpdateOperationsInput | string
+    odpoved?: StringFieldUpdateOperationsInput | string
+    publikovano?: BoolFieldUpdateOperationsInput | boolean
+    poradi?: IntFieldUpdateOperationsInput | number
+    vytvoreno?: DateTimeFieldUpdateOperationsInput | Date | string
+    aktualizovano?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type FaqUncheckedUpdateManyInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    otazka?: StringFieldUpdateOperationsInput | string
+    odpoved?: StringFieldUpdateOperationsInput | string
+    publikovano?: BoolFieldUpdateOperationsInput | boolean
+    poradi?: IntFieldUpdateOperationsInput | number
+    vytvoreno?: DateTimeFieldUpdateOperationsInput | Date | string
+    aktualizovano?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type StringFilter<$PrismaModel = never> = {
@@ -7629,108 +8912,6 @@ export namespace Prisma {
     not?: NestedBoolFilter<$PrismaModel> | boolean
   }
 
-  export type DateTimeFilter<$PrismaModel = never> = {
-    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
-    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
-    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    not?: NestedDateTimeFilter<$PrismaModel> | Date | string
-  }
-
-  export type NovinkaCountOrderByAggregateInput = {
-    id?: SortOrder
-    nazev?: SortOrder
-    obsah?: SortOrder
-    publikovano?: SortOrder
-    vytvoreno?: SortOrder
-    aktualizovano?: SortOrder
-  }
-
-  export type NovinkaAvgOrderByAggregateInput = {
-    id?: SortOrder
-  }
-
-  export type NovinkaMaxOrderByAggregateInput = {
-    id?: SortOrder
-    nazev?: SortOrder
-    obsah?: SortOrder
-    publikovano?: SortOrder
-    vytvoreno?: SortOrder
-    aktualizovano?: SortOrder
-  }
-
-  export type NovinkaMinOrderByAggregateInput = {
-    id?: SortOrder
-    nazev?: SortOrder
-    obsah?: SortOrder
-    publikovano?: SortOrder
-    vytvoreno?: SortOrder
-    aktualizovano?: SortOrder
-  }
-
-  export type NovinkaSumOrderByAggregateInput = {
-    id?: SortOrder
-  }
-
-  export type IntWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: number | IntFieldRefInput<$PrismaModel>
-    in?: number[] | ListIntFieldRefInput<$PrismaModel>
-    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
-    lt?: number | IntFieldRefInput<$PrismaModel>
-    lte?: number | IntFieldRefInput<$PrismaModel>
-    gt?: number | IntFieldRefInput<$PrismaModel>
-    gte?: number | IntFieldRefInput<$PrismaModel>
-    not?: NestedIntWithAggregatesFilter<$PrismaModel> | number
-    _count?: NestedIntFilter<$PrismaModel>
-    _avg?: NestedFloatFilter<$PrismaModel>
-    _sum?: NestedIntFilter<$PrismaModel>
-    _min?: NestedIntFilter<$PrismaModel>
-    _max?: NestedIntFilter<$PrismaModel>
-  }
-
-  export type StringWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: string | StringFieldRefInput<$PrismaModel>
-    in?: string[] | ListStringFieldRefInput<$PrismaModel>
-    notIn?: string[] | ListStringFieldRefInput<$PrismaModel>
-    lt?: string | StringFieldRefInput<$PrismaModel>
-    lte?: string | StringFieldRefInput<$PrismaModel>
-    gt?: string | StringFieldRefInput<$PrismaModel>
-    gte?: string | StringFieldRefInput<$PrismaModel>
-    contains?: string | StringFieldRefInput<$PrismaModel>
-    startsWith?: string | StringFieldRefInput<$PrismaModel>
-    endsWith?: string | StringFieldRefInput<$PrismaModel>
-    mode?: QueryMode
-    not?: NestedStringWithAggregatesFilter<$PrismaModel> | string
-    _count?: NestedIntFilter<$PrismaModel>
-    _min?: NestedStringFilter<$PrismaModel>
-    _max?: NestedStringFilter<$PrismaModel>
-  }
-
-  export type BoolWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
-    not?: NestedBoolWithAggregatesFilter<$PrismaModel> | boolean
-    _count?: NestedIntFilter<$PrismaModel>
-    _min?: NestedBoolFilter<$PrismaModel>
-    _max?: NestedBoolFilter<$PrismaModel>
-  }
-
-  export type DateTimeWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
-    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
-    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    not?: NestedDateTimeWithAggregatesFilter<$PrismaModel> | Date | string
-    _count?: NestedIntFilter<$PrismaModel>
-    _min?: NestedDateTimeFilter<$PrismaModel>
-    _max?: NestedDateTimeFilter<$PrismaModel>
-  }
-
   export type StringNullableFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel> | null
     in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
@@ -7744,6 +8925,17 @@ export namespace Prisma {
     endsWith?: string | StringFieldRefInput<$PrismaModel>
     mode?: QueryMode
     not?: NestedStringNullableFilter<$PrismaModel> | string | null
+  }
+
+  export type DateTimeFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeFilter<$PrismaModel> | Date | string
   }
 
   export type SessionListRelationFilter = {
@@ -7801,6 +8993,32 @@ export namespace Prisma {
     updatedAt?: SortOrder
   }
 
+  export type StringWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel>
+    in?: string[] | ListStringFieldRefInput<$PrismaModel>
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel>
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    mode?: QueryMode
+    not?: NestedStringWithAggregatesFilter<$PrismaModel> | string
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedStringFilter<$PrismaModel>
+    _max?: NestedStringFilter<$PrismaModel>
+  }
+
+  export type BoolWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
+    not?: NestedBoolWithAggregatesFilter<$PrismaModel> | boolean
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedBoolFilter<$PrismaModel>
+    _max?: NestedBoolFilter<$PrismaModel>
+  }
+
   export type StringNullableWithAggregatesFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel> | null
     in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
@@ -7817,6 +9035,20 @@ export namespace Prisma {
     _count?: NestedIntNullableFilter<$PrismaModel>
     _min?: NestedStringNullableFilter<$PrismaModel>
     _max?: NestedStringNullableFilter<$PrismaModel>
+  }
+
+  export type DateTimeWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeWithAggregatesFilter<$PrismaModel> | Date | string
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedDateTimeFilter<$PrismaModel>
+    _max?: NestedDateTimeFilter<$PrismaModel>
   }
 
   export type UserScalarRelationFilter = {
@@ -7957,24 +9189,106 @@ export namespace Prisma {
     updatedAt?: SortOrder
   }
 
-  export type StringFieldUpdateOperationsInput = {
-    set?: string
+  export type IntFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel>
+    in?: number[] | ListIntFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntFilter<$PrismaModel> | number
   }
 
-  export type BoolFieldUpdateOperationsInput = {
-    set?: boolean
+  export type NovinkaCountOrderByAggregateInput = {
+    id?: SortOrder
+    nazev?: SortOrder
+    obsah?: SortOrder
+    publikovano?: SortOrder
+    vytvoreno?: SortOrder
+    aktualizovano?: SortOrder
   }
 
-  export type DateTimeFieldUpdateOperationsInput = {
-    set?: Date | string
+  export type NovinkaAvgOrderByAggregateInput = {
+    id?: SortOrder
   }
 
-  export type IntFieldUpdateOperationsInput = {
-    set?: number
-    increment?: number
-    decrement?: number
-    multiply?: number
-    divide?: number
+  export type NovinkaMaxOrderByAggregateInput = {
+    id?: SortOrder
+    nazev?: SortOrder
+    obsah?: SortOrder
+    publikovano?: SortOrder
+    vytvoreno?: SortOrder
+    aktualizovano?: SortOrder
+  }
+
+  export type NovinkaMinOrderByAggregateInput = {
+    id?: SortOrder
+    nazev?: SortOrder
+    obsah?: SortOrder
+    publikovano?: SortOrder
+    vytvoreno?: SortOrder
+    aktualizovano?: SortOrder
+  }
+
+  export type NovinkaSumOrderByAggregateInput = {
+    id?: SortOrder
+  }
+
+  export type IntWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel>
+    in?: number[] | ListIntFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntWithAggregatesFilter<$PrismaModel> | number
+    _count?: NestedIntFilter<$PrismaModel>
+    _avg?: NestedFloatFilter<$PrismaModel>
+    _sum?: NestedIntFilter<$PrismaModel>
+    _min?: NestedIntFilter<$PrismaModel>
+    _max?: NestedIntFilter<$PrismaModel>
+  }
+
+  export type FaqCountOrderByAggregateInput = {
+    id?: SortOrder
+    otazka?: SortOrder
+    odpoved?: SortOrder
+    publikovano?: SortOrder
+    poradi?: SortOrder
+    vytvoreno?: SortOrder
+    aktualizovano?: SortOrder
+  }
+
+  export type FaqAvgOrderByAggregateInput = {
+    id?: SortOrder
+    poradi?: SortOrder
+  }
+
+  export type FaqMaxOrderByAggregateInput = {
+    id?: SortOrder
+    otazka?: SortOrder
+    odpoved?: SortOrder
+    publikovano?: SortOrder
+    poradi?: SortOrder
+    vytvoreno?: SortOrder
+    aktualizovano?: SortOrder
+  }
+
+  export type FaqMinOrderByAggregateInput = {
+    id?: SortOrder
+    otazka?: SortOrder
+    odpoved?: SortOrder
+    publikovano?: SortOrder
+    poradi?: SortOrder
+    vytvoreno?: SortOrder
+    aktualizovano?: SortOrder
+  }
+
+  export type FaqSumOrderByAggregateInput = {
+    id?: SortOrder
+    poradi?: SortOrder
   }
 
   export type SessionCreateNestedManyWithoutUserInput = {
@@ -8005,8 +9319,20 @@ export namespace Prisma {
     connect?: AccountWhereUniqueInput | AccountWhereUniqueInput[]
   }
 
+  export type StringFieldUpdateOperationsInput = {
+    set?: string
+  }
+
+  export type BoolFieldUpdateOperationsInput = {
+    set?: boolean
+  }
+
   export type NullableStringFieldUpdateOperationsInput = {
     set?: string | null
+  }
+
+  export type DateTimeFieldUpdateOperationsInput = {
+    set?: Date | string
   }
 
   export type SessionUpdateManyWithoutUserNestedInput = {
@@ -8097,15 +9423,12 @@ export namespace Prisma {
     update?: XOR<XOR<UserUpdateToOneWithWhereWithoutAccountsInput, UserUpdateWithoutAccountsInput>, UserUncheckedUpdateWithoutAccountsInput>
   }
 
-  export type NestedIntFilter<$PrismaModel = never> = {
-    equals?: number | IntFieldRefInput<$PrismaModel>
-    in?: number[] | ListIntFieldRefInput<$PrismaModel>
-    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
-    lt?: number | IntFieldRefInput<$PrismaModel>
-    lte?: number | IntFieldRefInput<$PrismaModel>
-    gt?: number | IntFieldRefInput<$PrismaModel>
-    gte?: number | IntFieldRefInput<$PrismaModel>
-    not?: NestedIntFilter<$PrismaModel> | number
+  export type IntFieldUpdateOperationsInput = {
+    set?: number
+    increment?: number
+    decrement?: number
+    multiply?: number
+    divide?: number
   }
 
   export type NestedStringFilter<$PrismaModel = never> = {
@@ -8127,6 +9450,20 @@ export namespace Prisma {
     not?: NestedBoolFilter<$PrismaModel> | boolean
   }
 
+  export type NestedStringNullableFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel> | null
+    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    not?: NestedStringNullableFilter<$PrismaModel> | string | null
+  }
+
   export type NestedDateTimeFilter<$PrismaModel = never> = {
     equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
@@ -8136,33 +9473,6 @@ export namespace Prisma {
     gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     not?: NestedDateTimeFilter<$PrismaModel> | Date | string
-  }
-
-  export type NestedIntWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: number | IntFieldRefInput<$PrismaModel>
-    in?: number[] | ListIntFieldRefInput<$PrismaModel>
-    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
-    lt?: number | IntFieldRefInput<$PrismaModel>
-    lte?: number | IntFieldRefInput<$PrismaModel>
-    gt?: number | IntFieldRefInput<$PrismaModel>
-    gte?: number | IntFieldRefInput<$PrismaModel>
-    not?: NestedIntWithAggregatesFilter<$PrismaModel> | number
-    _count?: NestedIntFilter<$PrismaModel>
-    _avg?: NestedFloatFilter<$PrismaModel>
-    _sum?: NestedIntFilter<$PrismaModel>
-    _min?: NestedIntFilter<$PrismaModel>
-    _max?: NestedIntFilter<$PrismaModel>
-  }
-
-  export type NestedFloatFilter<$PrismaModel = never> = {
-    equals?: number | FloatFieldRefInput<$PrismaModel>
-    in?: number[] | ListFloatFieldRefInput<$PrismaModel>
-    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel>
-    lt?: number | FloatFieldRefInput<$PrismaModel>
-    lte?: number | FloatFieldRefInput<$PrismaModel>
-    gt?: number | FloatFieldRefInput<$PrismaModel>
-    gte?: number | FloatFieldRefInput<$PrismaModel>
-    not?: NestedFloatFilter<$PrismaModel> | number
   }
 
   export type NestedStringWithAggregatesFilter<$PrismaModel = never> = {
@@ -8182,40 +9492,23 @@ export namespace Prisma {
     _max?: NestedStringFilter<$PrismaModel>
   }
 
+  export type NestedIntFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel>
+    in?: number[] | ListIntFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntFilter<$PrismaModel> | number
+  }
+
   export type NestedBoolWithAggregatesFilter<$PrismaModel = never> = {
     equals?: boolean | BooleanFieldRefInput<$PrismaModel>
     not?: NestedBoolWithAggregatesFilter<$PrismaModel> | boolean
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedBoolFilter<$PrismaModel>
     _max?: NestedBoolFilter<$PrismaModel>
-  }
-
-  export type NestedDateTimeWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
-    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
-    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    not?: NestedDateTimeWithAggregatesFilter<$PrismaModel> | Date | string
-    _count?: NestedIntFilter<$PrismaModel>
-    _min?: NestedDateTimeFilter<$PrismaModel>
-    _max?: NestedDateTimeFilter<$PrismaModel>
-  }
-
-  export type NestedStringNullableFilter<$PrismaModel = never> = {
-    equals?: string | StringFieldRefInput<$PrismaModel> | null
-    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
-    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
-    lt?: string | StringFieldRefInput<$PrismaModel>
-    lte?: string | StringFieldRefInput<$PrismaModel>
-    gt?: string | StringFieldRefInput<$PrismaModel>
-    gte?: string | StringFieldRefInput<$PrismaModel>
-    contains?: string | StringFieldRefInput<$PrismaModel>
-    startsWith?: string | StringFieldRefInput<$PrismaModel>
-    endsWith?: string | StringFieldRefInput<$PrismaModel>
-    not?: NestedStringNullableFilter<$PrismaModel> | string | null
   }
 
   export type NestedStringNullableWithAggregatesFilter<$PrismaModel = never> = {
@@ -8246,6 +9539,20 @@ export namespace Prisma {
     not?: NestedIntNullableFilter<$PrismaModel> | number | null
   }
 
+  export type NestedDateTimeWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeWithAggregatesFilter<$PrismaModel> | Date | string
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedDateTimeFilter<$PrismaModel>
+    _max?: NestedDateTimeFilter<$PrismaModel>
+  }
+
   export type NestedDateTimeNullableFilter<$PrismaModel = never> = {
     equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
     in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
@@ -8269,6 +9576,33 @@ export namespace Prisma {
     _count?: NestedIntNullableFilter<$PrismaModel>
     _min?: NestedDateTimeNullableFilter<$PrismaModel>
     _max?: NestedDateTimeNullableFilter<$PrismaModel>
+  }
+
+  export type NestedIntWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel>
+    in?: number[] | ListIntFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntWithAggregatesFilter<$PrismaModel> | number
+    _count?: NestedIntFilter<$PrismaModel>
+    _avg?: NestedFloatFilter<$PrismaModel>
+    _sum?: NestedIntFilter<$PrismaModel>
+    _min?: NestedIntFilter<$PrismaModel>
+    _max?: NestedIntFilter<$PrismaModel>
+  }
+
+  export type NestedFloatFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel>
+    in?: number[] | ListFloatFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel>
+    lt?: number | FloatFieldRefInput<$PrismaModel>
+    lte?: number | FloatFieldRefInput<$PrismaModel>
+    gt?: number | FloatFieldRefInput<$PrismaModel>
+    gte?: number | FloatFieldRefInput<$PrismaModel>
+    not?: NestedFloatFilter<$PrismaModel> | number
   }
 
   export type SessionCreateWithoutUserInput = {

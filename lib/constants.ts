@@ -43,33 +43,7 @@ export const OPENING_HOURS = [
   },
 ];
 
-export const FAQ_DATA = [
-  {
-    title: "Jak probíhá vyšetření u ORL lékaře?",
-    description:
-      "Vyšetření zahrnuje zhodnocení stavu uší, nosu a krku. Podle obtíží může lékař provést otoskopii, endoskopii nebo další doplňková vyšetření.",
-  },
-  {
-    title: "Je nutné se předem objednat?",
-    description:
-      "Ano, většina vyšetření probíhá na objednání. Akutní případy přijímáme v určených časech podle ordinačních hodin.",
-  },
-  {
-    title: "Co si mám vzít s sebou na vyšetření?",
-    description:
-      "Doporučujeme kartičku pojištěnce, výpis od praktického lékaře, seznam užívaných léků a případně předchozí zdravotní dokumentaci.",
-  },
-  {
-    title: "Provádíte výplach uší a ošetření nosu?",
-    description:
-      "Ano, poskytujeme standardní ORL výkony včetně výplachů uší, ošetření nosní sliznice, kontroly dutin a péče o krk a mandle.",
-  },
-  {
-    title: "Jak dlouho trvá vyšetření?",
-    description:
-      "Běžné vyšetření trvá přibližně 10–20 minut. Složitější diagnostické výkony mohou vyžadovat více času.",
-  },
-];
+
 
 export const COMPANY_DATA = {
   name: "MUDr. Kolářová Alena",

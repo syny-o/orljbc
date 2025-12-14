@@ -120,15 +120,6 @@ exports.Prisma.TransactionIsolationLevel = makeStrictEnum({
   Serializable: 'Serializable'
 });
 
-exports.Prisma.NovinkaScalarFieldEnum = {
-  id: 'id',
-  nazev: 'nazev',
-  obsah: 'obsah',
-  publikovano: 'publikovano',
-  vytvoreno: 'vytvoreno',
-  aktualizovano: 'aktualizovano'
-};
-
 exports.Prisma.UserScalarFieldEnum = {
   id: 'id',
   name: 'name',
@@ -175,6 +166,25 @@ exports.Prisma.VerificationScalarFieldEnum = {
   updatedAt: 'updatedAt'
 };
 
+exports.Prisma.NovinkaScalarFieldEnum = {
+  id: 'id',
+  nazev: 'nazev',
+  obsah: 'obsah',
+  publikovano: 'publikovano',
+  vytvoreno: 'vytvoreno',
+  aktualizovano: 'aktualizovano'
+};
+
+exports.Prisma.FaqScalarFieldEnum = {
+  id: 'id',
+  otazka: 'otazka',
+  odpoved: 'odpoved',
+  publikovano: 'publikovano',
+  poradi: 'poradi',
+  vytvoreno: 'vytvoreno',
+  aktualizovano: 'aktualizovano'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -192,11 +202,12 @@ exports.Prisma.NullsOrder = {
 
 
 exports.Prisma.ModelName = {
-  Novinka: 'Novinka',
   User: 'User',
   Session: 'Session',
   Account: 'Account',
-  Verification: 'Verification'
+  Verification: 'Verification',
+  Novinka: 'Novinka',
+  Faq: 'Faq'
 };
 
 /**

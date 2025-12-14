@@ -13,14 +13,8 @@ datasource db {
   provider = "postgresql"
 }
 
-model Novinka {
-  id            Int      @id @default(autoincrement())
-  nazev         String
-  obsah         String
-  publikovano   Boolean  @default(false)
-  vytvoreno     DateTime @default(now())
-  aktualizovano DateTime @updatedAt
-}
+
+// Better Auth Models
 
 model User {
   id            String    @id
@@ -83,4 +77,29 @@ model Verification {
 
   @@index([identifier])
   @@map("verification")
+}
+
+
+
+// My custom models
+
+model Novinka {
+  id            Int      @id @default(autoincrement())
+  nazev         String
+  obsah         String
+  publikovano   Boolean  @default(false)
+  vytvoreno     DateTime @default(now())
+  aktualizovano DateTime @updatedAt
+}
+
+
+
+model Faq {
+  id           Int      @id @default(autoincrement())
+  otazka       String
+  odpoved      String
+  publikovano  Boolean  @default(true)
+  poradi       Int      @default(0)
+  vytvoreno    DateTime @default(now())
+  aktualizovano DateTime @updatedAt
 }
